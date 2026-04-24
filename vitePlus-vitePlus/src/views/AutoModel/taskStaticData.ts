@@ -980,11 +980,11 @@ export const featureTable = [
             },
             {
                 name: 'mad_n',
-                modelValue: 0,
+                modelValue: 3,
             },
             {
                 name: 'sigma_n',
-                modelValue: 0,
+                modelValue: 3,
             },
         ]
     },

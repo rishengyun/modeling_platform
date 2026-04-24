@@ -316,7 +316,7 @@ watch(pageIndex, (newValue) => {
       if (res.data.service_state === 'running') {
         node_id = res.data.extra_conf?.node_id || ''
         c_id = res.data.extra_conf?.container_id || ''
-        let url = `ws://172.18.129.239:8090/container/read_log/${node_id}/${c_id}`
+        let url = `ws://192.168.109.198:8090/container/read_log/${node_id}/${c_id}`
         if (!wsDict[url]) {
           logConnection(url, 'containerMessage')
         }
@@ -345,7 +345,7 @@ onMounted(() => {
   serviceId.value = String(route.query.serviceId || '')
   serviceName.value = String(route.query.serviceName || '')
   serviceState.value = String(route.query.serviceState || '')
-  logConnection(`ws://172.18.129.239:8090/task/read_log/${serviceId.value}`, 'serviceMessages')
+  logConnection(`ws://192.168.109.198:8090/task/read_log/${serviceId.value}`, 'serviceMessages')
 })
 
 onBeforeUnmount(() => {

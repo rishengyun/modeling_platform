@@ -65,7 +65,7 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(/^\/pyanalysis/, '')
         },
         '/before': {
-          target: 'http://172.18.129.239:8080/algo',
+          target: 'http://192.168.109.198:8080/algo',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/before/, '')
         }

@@ -16,7 +16,7 @@
          ▼                   ▼                   ▼
    ┌──────────┐        ┌──────────┐        ┌──────────┐
    │  Nacos   │        │ RabbitMQ │        │  Redis   │
-   │  :8848   │        │ :5672    │        │  :6379   │
+   │  :8848   │        │ :5672    │        │  :6380   │
    └──────────┘        └──────────┘        └──────────┘
          │                   │                   │
          └───────────────────┼───────────────────┘
@@ -40,7 +40,7 @@
 | FastAPI 主节点 | 8090 | 任务调度 API（/algo） |
 | Nacos | 8848, 9848 | 服务发现 |
 | RabbitMQ | 5672, 15672 | 消息队列 |
-| Redis | 6379 | 缓存/Token |
+| Redis | 6380 | 缓存/Token |
 | PostgreSQL | 5432 | 数据库 |
 | Harbor | 8930 | 镜像仓库 |
 | 前端 | 9877 | 开发模式 |
@@ -78,7 +78,7 @@
 
 ### 3.2 Redis
 
-- 端口：6379
+- 端口：6380
 - 需设置密码：`niweijian123`（与 SpringBoot、FastAPI config 一致）
 - 建议 `db=1` 用于 FastAPI 节点/资源，`db=2` 用于 SpringBoot Token
 
@@ -235,9 +235,9 @@ Gateway 通过 `lb://python-data-service` 转发 `/pyanalysis/**`。
 ```bash
 # 以 data-pre 为例
 cd model-backend/modeling-platform-model-data-pre-backend
-docker build -t 172.18.129.239:8930/library/data-pre:0.8.4 .
-docker login 172.18.129.239:8930
-docker push 172.18.129.239:8930/library/data-pre:0.8.4
+docker build -t 192.168.109.198:8930/library/data-pre:0.8.4 .
+docker login 192.168.109.198:8930
+docker push 192.168.109.198:8930/library/data-pre:0.8.4
 ```
 
 镜像名、版本需与 `config.yml` 中 `subtask_dict` 一致。
