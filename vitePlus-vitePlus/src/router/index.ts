@@ -41,6 +41,12 @@ const ImageList = () => import("@/views/ImageRepository/ImageList.vue")
 const RelationalGraph = () => import("@/views/Graph/RelationalGraph.vue")
 const GraphList = () => import("@/views/Graph/GraphList.vue")
 
+// 平台扩展模块
+const IndustryWorkbench = () => import("@/views/Competition/IndustryWorkbench.vue")
+const OpenServiceCenter = () => import("@/views/Competition/OpenServiceCenter.vue")
+const WorkflowStudio = () => import("@/views/Competition/WorkflowStudio.vue")
+const AgentShowcase = () => import("@/views/Competition/AgentShowcase.vue")
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -68,7 +74,11 @@ const routes: Array<RouteRecordRaw> = [
       { path: '/imageList', name: 'ImageList', component: ImageList },
       { path: '/onlineServiceLog', name: 'OnlineServiceLog', component: OnlineServiceLog },
       { path: '/graphList', name: 'GraphList', component: GraphList },
-      { path: '/graph/:lastPos?', name: 'GraphService', component: RelationalGraph }
+      { path: '/graph/:lastPos?', name: 'GraphService', component: RelationalGraph },
+      { path: '/industryWorkbench', name: 'IndustryWorkbench', component: IndustryWorkbench },
+      { path: '/openServiceCenter', name: 'OpenServiceCenter', component: OpenServiceCenter },
+      { path: '/workflowStudio', name: 'WorkflowStudio', component: WorkflowStudio },
+      { path: '/agentShowcase', name: 'AgentShowcase', component: AgentShowcase }
     ]
   },
   { path: '/login', name: 'Login', component: Login },

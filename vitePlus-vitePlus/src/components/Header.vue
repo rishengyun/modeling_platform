@@ -3,7 +3,7 @@
     <div class="logo-area">
       <router-link to="/home" class="logo-link">
         <el-icon class="platform-icon"><Monitor /></el-icon>
-        <span class="platform-title">智能中台建模平台</span>
+        <span class="platform-title">Linkrisk studio</span>
       </router-link>
     </div>
     <div class="user-area">

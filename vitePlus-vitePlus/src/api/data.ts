@@ -49,7 +49,10 @@ export const file = {
   saveJson: (form: Record<string, unknown>) =>
     springPost<unknown>("/data/File/saveJson", form, { headers: { "Content-Type": "multipart/form-data" } }),
   upload: (form: Record<string, unknown>) =>
-    springPost<unknown>("/data/File/Upload", form, { headers: { "Content-Type": "multipart/form-data" } }),
+    springPost<unknown>("/data/File/Upload", form, {
+      headers: { "Content-Type": "multipart/form-data" },
+      timeout: 900000,
+    }),
 };
 
 export const dataVisualization = {

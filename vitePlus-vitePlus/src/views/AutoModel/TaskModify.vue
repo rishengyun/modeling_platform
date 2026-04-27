@@ -1422,7 +1422,7 @@ export default {
           });
         }
         if (newValue === "classification") {
-          this.modelEvaluateList = ["accuracy","f1","f1_micro","f1_macro","f1_weighted","precision","recall"]
+          this.modelEvaluateList = ["f1","accuracy","balanced_accuracy","average_precision","f1_micro","f1_macro","f1_weighted","precision","recall"]
         } else if (newValue === "regression") {
           this.modelEvaluateList = ["MAE", "MSE"];
         } else if (newValue === "time_series_prediction") {

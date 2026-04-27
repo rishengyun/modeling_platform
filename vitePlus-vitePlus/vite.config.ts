@@ -186,7 +186,7 @@ export default defineConfig(({ command, mode }) => {
         NODE_ENV: JSON.stringify(mode),
         BASE_URL: JSON.stringify(env.VITE_BASE_URL || '/'),
         API_BASE_URL: JSON.stringify(env.VITE_API_BASE_URL || '/api'),
-        APP_TITLE: JSON.stringify(env.VITE_APP_TITLE || '智能中台建模平台')
+        APP_TITLE: JSON.stringify(env.VITE_APP_TITLE || 'Linkrisk studio')
       }
     }
   }

@@ -3,17 +3,17 @@
     <!-- 英雄区域 -->
     <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">智能中台建模平台</h1>
-        <!-- <p class="hero-description">
-          加速AI模型开发与部署，赋能企业智能化转型
-        </p> -->
+        <h1 class="hero-title">Linkrisk studio</h1>
+        <p class="hero-description">
+          面向供应链金融场景的智能风控与信用评估平台，融合低代码工作流、开放 API 和智能体能力。
+        </p>
         <div class="hero-buttons">
-          <el-button type="primary" class="get-started-btn" @click="navigateTo('modelList')">
-            立即开始
+          <el-button type="primary" class="get-started-btn" @click="navigateTo('industryWorkbench')">
+            查看行业工作台
             <el-icon class="icon-right"><ArrowRight /></el-icon>
           </el-button>
-          <el-button class="learn-more-btn" @click="scrollToFeatures">
-            了解更多
+          <el-button class="learn-more-btn" @click="navigateTo('workflowStudio')">
+            体验零代码建模
             <el-icon class="icon-right"><ArrowDown /></el-icon>
           </el-button>
         </div>
@@ -45,27 +45,27 @@
 
     <!-- 特色功能区域 -->
     <section class="features-section" ref="featuresSection">
-      <h2 class="section-title">平台特色</h2>
+      <h2 class="section-title">平台亮点</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <el-icon class="feature-icon"><DataAnalysis /></el-icon>
-          <h3>模型训练</h3>
-          <p>通过简单的配置，快速训练和调优AI模型，支持分类、回归、时间序列预测等多种任务类型</p>
+          <el-icon class="feature-icon"><Opportunity /></el-icon>
+          <h3>行业化升级</h3>
+          <p>从通用建模工具升级为供应链金融风控平台，覆盖企业评分、回款预测、合同抽取和图谱解释。</p>
         </div>
         <div class="feature-card">
-          <el-icon class="feature-icon"><Monitor /></el-icon>
-          <h3>服务部署</h3>
-          <p>一键将AI模型部署为在线服务，提供稳定、高性能的推理能力，实时监控服务状态</p>
+          <el-icon class="feature-icon"><Connection /></el-icon>
+          <h3>开放 API 服务中心</h3>
+          <p>把现有在线服务发布为统一开放接口，支持 API Key、示例调试、调用监控和市场化展示。</p>
         </div>
         <div class="feature-card">
-          <el-icon class="feature-icon"><Box /></el-icon>
-          <h3>模型管理</h3>
-          <p>集中管理和版本控制您的AI模型，支持公开分享，方便团队协作和模型迭代</p>
+          <el-icon class="feature-icon"><SetUp /></el-icon>
+          <h3>Chat2DAG 工作流</h3>
+          <p>一句话生成低代码工作流，并自动编译为现有 task.configuration 和部署参数。</p>
         </div>
         <div class="feature-card">
-          <el-icon class="feature-icon"><Files /></el-icon>
-          <h3>数据处理</h3>
-          <p>丰富的数据预处理工具，支持多种数据类型和格式的高效处理，视觉化展示数据分布</p>
+          <el-icon class="feature-icon"><MagicStick /></el-icon>
+          <h3>智能体加持</h3>
+          <p>Data Copilot、业务解释报告、Agent 自定义算子和 RiskGraph Agent 全部可在平台内演示。</p>
         </div>
       </div>
     </section>
@@ -74,45 +74,55 @@
     <section class="quick-access-section">
       <h2 class="section-title">快速访问</h2>
       <div class="access-cards">
-        <div class="access-card" @click="navigateTo('modelList')">
-          <el-icon class="access-icon"><Box /></el-icon>
-          <h3>模型库</h3>
-          <p>管理和使用您的AI模型</p>
+        <div class="access-card" @click="navigateTo('industryWorkbench')">
+          <el-icon class="access-icon"><Opportunity /></el-icon>
+          <h3>行业工作台</h3>
+            <p>查看业务概览、模块规划和演示脚本</p>
+          </div>
+          <div class="access-card" @click="navigateTo('datascreen')">
+            <el-icon class="access-icon"><Files /></el-icon>
+            <h3>数据集管理</h3>
+            <p>上传和组织训练数据</p>
+          </div>
+          <div class="access-card" @click="navigateTo('taskView')">
+            <el-icon class="access-icon"><List /></el-icon>
+            <h3>自动建模</h3>
+            <p>配置、运行和查看训练任务</p>
+          </div>
+          <div class="access-card" @click="navigateTo('modelList')">
+            <el-icon class="access-icon"><Box /></el-icon>
+            <h3>模型仓库</h3>
+            <p>管理训练完成后的模型资产</p>
         </div>
-        <div class="access-card" @click="navigateTo('imageList')">
-          <el-icon class="access-icon"><Picture /></el-icon>
-          <h3>镜像仓库</h3>
-          <p>管理和部署容器镜像</p>
-        </div>
-        <div class="access-card" @click="navigateTo('datascreen')">
-          <el-icon class="access-icon"><Files /></el-icon>
-          <h3>数据集管理</h3>
-          <p>上传和组织训练数据</p>
-        </div>
-        <div class="access-card" @click="navigateTo('taskView')">
-          <el-icon class="access-icon"><List /></el-icon>
-          <h3>任务管理</h3>
-          <p>监控和管理训练任务</p>
-        </div>
-        <div class="access-card" @click="navigateTo('onlineServiceList')">
-          <el-icon class="access-icon"><Monitor /></el-icon>
-          <h3>在线服务</h3>
-          <p>部署和监控AI服务</p>
-        </div>
-        <div class="access-card" @click="navigateTo('taskCreate')">
-          <el-icon class="access-icon"><Plus /></el-icon>
-          <h3>创建任务</h3>
-          <p>开始新的训练任务</p>
-        </div>
+          <div class="access-card" @click="navigateTo('onlineServiceList')">
+            <el-icon class="access-icon"><Monitor /></el-icon>
+            <h3>在线服务</h3>
+            <p>部署和监控 AI 服务</p>
+          </div>
+          <div class="access-card" @click="navigateTo('openServiceCenter')">
+            <el-icon class="access-icon"><Connection /></el-icon>
+            <h3>开放服务中心</h3>
+            <p>发布、调试和展示开放 API</p>
+          </div>
+          <div class="access-card" @click="navigateTo('workflowStudio')">
+            <el-icon class="access-icon"><SetUp /></el-icon>
+            <h3>低代码工坊</h3>
+            <p>通过自然语言生成风控工作流</p>
+          </div>
+          <div class="access-card" @click="navigateTo('agentShowcase')">
+            <el-icon class="access-icon"><MagicStick /></el-icon>
+            <h3>智能体实验室</h3>
+            <p>体验 Data Copilot 与业务解释能力</p>
+          </div>
       </div>
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, Ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ArrowRight, ArrowDown, DataAnalysis, Monitor, Box, Files, Picture, List, Plus } from '@element-plus/icons-vue'
+import { ArrowRight, ArrowDown, Files, List, Box, Opportunity, Connection, SetUp, MagicStick } from '@element-plus/icons-vue'
 import { modelRepository } from '@/api/model'
 import { onlineService, taskManage } from '@/api/task'
 import { dataset } from '@/api/data'
@@ -188,12 +198,6 @@ const loadStats = async () => {
 // 路由跳转函数
 function navigateTo(route: string) {
   router.push(`/${route}`)
-}
-// 滚动到特色功能区域
-function scrollToFeatures() {
-  if (featuresSection.value) {
-    featuresSection.value.scrollIntoView({ behavior: 'smooth' })
-  }
 }
 // 组件挂载后加载统计数据
 onMounted(() => {
