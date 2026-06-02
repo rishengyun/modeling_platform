@@ -1,11 +1,11 @@
 <template>
-  <div style="display: flex; flex-direction: column">
+  <div style="display: flex; flex-direction: column" :class="{ 'is-embedded-layout': isEmbedded }">
     <!-- 头部 -->
-    <Header style="position: fixed" />
+    <Header v-if="!isEmbedded" style="position: fixed" />
     <!-- 主体 -->
     <div style="display: flex; height: 100vh;">
       <!-- 侧边栏 -->
-      <div class="sidebar">
+      <div v-if="!isEmbedded" class="sidebar">
         <MenuLeft />
       </div>
       <!-- 内容区域 -->
@@ -17,9 +17,12 @@
 </template>
 
 <script lang="ts" setup>
-
+import { ref } from 'vue'
 import Header from "@/components/Header.vue"
 import MenuLeft from "@/components/Menu_left.vue"
+
+// 自动检测是否被嵌入在 iframe 中，使用 ref 确保 Vue 模板能响应式更新
+const isEmbedded = ref(window.self !== window.top)
 
 </script>
 
@@ -40,6 +43,13 @@ import MenuLeft from "@/components/Menu_left.vue"
   overflow-y: auto; /* 允许垂直滚动 */
   padding-left: 200px; /* 调整内容区域的左边距 */
 }
+
+/* 当被嵌入 iframe 时，重置主内容区域的内边距 */
+.is-embedded-layout .main-view {
+  padding-top: 0;
+  padding-left: 0;
+}
+
 /* 在窗口宽度小于某个值时隐藏侧边栏 */
 @media (max-width: 900px) {
   .sidebar {
