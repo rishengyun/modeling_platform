@@ -18,8 +18,11 @@ request.interceptors.request.use(
       "/auth/UserLogin/", // gateway-facing auth endpoints
     ];
 
+    // 开发环境跳过认证：不做 token 校验，直接放行
+    const skipAuth = import.meta.env.VITE_SKIP_AUTH === 'true';
+    
     // If token is missing and endpoint is not token-free, redirect to login early.
-    if (!token) {
+    if (!token && !skipAuth) {
       const isTokenFree = tokenFreePrefixes.some((p) => url.startsWith(p));
       if (!isTokenFree) {
         router.push({ path: "/login" });
