@@ -22,7 +22,126 @@ http://服务器IP/modeling/dataAnnotation
 
 第三方平台用户登录时，可由第三方平台后端或前端同步调用建模平台登录接口，使用约定好的专用账号登录。
 
-### 2.1 URL 参数自动登录
+### 2.1 URL 参数自动登录（加密模式 - 推荐 ✅）
+
+> ⚠️ **安全通告**：明文传参模式（`username=xxx&password=yyy`）已不建议使用，密码会暴露在浏览器历史和服务器日志中。请优先使用以下加密模式。
+
+第三方平台与建模平台约定一个**预共享密钥**（`secretKey`），使用 AES-256-CBC 算法加密 `username:password`，将密文通过 `token` 参数传递。建模平台前端在路由守卫中解密后完成登录。
+
+#### 加密规范
+
+| 项目 | 值 |
+|------|-----|
+| 算法 | AES-256-CBC（PKCS7 填充） |
+| 密钥派生 | SHA-256(共享密钥) → 32 字节 key |
+| IV | 随机 16 字节 |
+| 明文格式 | `username:password`（冒号分隔） |
+| 密文格式 | Base64URL( IV + Ciphertext ) |
+| URL 参数名 | `token` |
+
+#### 各语言加密示例
+
+**JavaScript — CryptoJS（推荐父系统使用）:**
+```js
+// 需要引入 crypto-js: npm install crypto-js
+function encrypt(username, password, secret) {
+    const key = CryptoJS.SHA256(secret);               // WordArray, 32 字节
+    const iv = CryptoJS.lib.WordArray.random(16);      // 随机 16 字节 IV
+    const encrypted = CryptoJS.AES.encrypt(
+        username + ':' + password,
+        key,
+        { iv: iv }
+    );
+    // 拼接 IV + Ciphertext，输出 Base64URL
+    return CryptoJS.enc.Base64url.stringify(
+        iv.clone().concat(encrypted.ciphertext)
+    );
+}
+```
+
+**Java:**
+```java
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.util.Base64;
+
+public class EmbedToken {
+    public static String encrypt(String username, String password, String secret) throws Exception {
+        // SHA-256 派生密钥
+        MessageDigest sha = MessageDigest.getInstance("SHA-256");
+        byte[] keyBytes = sha.digest(secret.getBytes("UTF-8"));
+        SecretKeySpec key = new SecretKeySpec(keyBytes, "AES");
+        
+        // 随机 16 字节 IV
+        byte[] iv = new byte[16];
+        new SecureRandom().nextBytes(iv);
+        IvParameterSpec ivSpec = new IvParameterSpec(iv);
+        
+        // AES-CBC 加密
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
+        byte[] plaintext = (username + ":" + password).getBytes("UTF-8");
+        byte[] ciphertext = cipher.doFinal(plaintext);
+        
+        // 拼接 IV + Ciphertext，Base64URL 编码
+        byte[] combined = new byte[iv.length + ciphertext.length];
+        System.arraycopy(iv, 0, combined, 0, iv.length);
+        System.arraycopy(ciphertext, 0, combined, iv.length, ciphertext.length);
+        
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(combined);
+    }
+}
+```
+
+**Python:**
+```python
+import hashlib
+import os
+import base64
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import padding
+
+def encrypt(username: str, password: str, secret: str) -> str:
+    # SHA-256 派生密钥
+    key = hashlib.sha256(secret.encode()).digest()
+    iv = os.urandom(16)
+    plaintext = f"{username}:{password}".encode()
+    
+    # PKCS7 填充
+    padder = padding.PKCS7(128).padder()
+    padded = padder.update(plaintext) + padder.finalize()
+    
+    # AES-CBC 加密
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
+    encryptor = cipher.encryptor()
+    ciphertext = encryptor.update(padded) + encryptor.finalize()
+    
+    # 拼接 IV + Ciphertext，Base64URL 编码
+    combined = iv + ciphertext
+    return base64.urlsafe_b64encode(combined).rstrip(b'=').decode()
+```
+
+#### URL 示例
+
+```text
+http://服务器IP/modeling/dataAnnotation?token=ZXhhbXBsZS10b2tlbi1lbmNyeXB0ZWQ
+```
+
+#### iframe 示例
+
+```html
+<iframe
+  src="http://服务器IP/modeling/dataAnnotation?token=ZXhhbXBsZS10b2tlbi1lbmNyeXB0ZWQ"
+  style="width: 100%; height: 100vh; border: 0;"
+></iframe>
+```
+
+### 2.2 URL 参数自动登录（明文模式 - 不推荐 ⚠️）
+
+> 此模式保留仅供向后兼容，新接入请使用上方加密模式。
 
 第三方平台也可以直接在嵌入页面 URL 中携带建模平台专用账号密码。建模平台前端会在页面加载时读取参数，调用本平台登录接口，登录成功后保存用户信息和 Token，然后自动移除 URL 中的账号密码参数。
 
@@ -39,56 +158,9 @@ http://服务器IP/modeling/dataAnnotation
 http://服务器IP/modeling/dataAnnotation?username=embed_user_1&password=your_password
 ```
 
-或：
-
-```text
-http://服务器IP:9877/dataAnnotation?username=embed_user_1&password=your_password
-```
-
-iframe 示例：
-
-```html
-<iframe
-  src="http://服务器IP/modeling/dataAnnotation?username=embed_user_1&password=your_password"
-  style="width: 100%; height: 100vh; border: 0;"
-></iframe>
-```
-
-登录成功后，前端会保存：
-
-```js
-localStorage.setItem('Username', username)
-localStorage.setItem('Token', token)
-localStorage.setItem('token', token)
-```
-
-如果后端返回 `user_id`，也会保存：
-
-```js
-localStorage.setItem('user_id', userId)
-localStorage.setItem('UserId', userId)
-```
-
-随后 URL 会从：
-
-```text
-/dataAnnotation?username=embed_user_1&password=your_password
-```
-
-自动清理为：
-
-```text
-/dataAnnotation
-```
-
-> **非常重要：第三方仅需在“首次嵌入访问”或“跨域切换外层菜单”时拼接一次账号密码即可！**
-> 1. **首次登录**：iframe 首次加载带有参数的 URL，建模平台自动完成后台登录，将 Token 存入浏览器的 Local Storage，并自动刷新剔除明文密码。
-> 2. **内部点击**：用户在 iframe 内部点击任何其他菜单、按钮，系统会自动携带已存储的 Token，**完全不需要**第三方再次提供账号密码。
-> 3. **外部菜单切换**：若第三方系统从外部自身菜单强制切换 iframe 的 src (例如从 `/taskView` 切换为 `/dataAnnotation`)，由于同源 Local Storage 共享机制，平台依然保持登录状态。为了稳妥，第三方在切换外层菜单时，可以依然拼接参数（系统会自动校验重登）或者不拼接直接跳入。
-
 > 注意：URL 中携带密码会被浏览器历史、服务器访问日志、代理日志记录。当前方案按第三方平台约定实现，建议仅使用专用低权限账号。
 
-### 2.2 登录页面路由
+### 2.3 登录页面路由
 
 如果需要人工登录，可访问：
 
@@ -102,7 +174,7 @@ localStorage.setItem('UserId', userId)
 http://服务器IP/modeling/login
 ```
 
-### 2.3 登录接口
+### 2.4 登录接口
 
 前端当前使用的登录接口为：
 
@@ -124,7 +196,7 @@ POST http://服务器IP/modeling/api/auth/UserLogin/Login
 
 实际以部署时的 Nginx `/api` 代理配置为准。
 
-### 2.4 请求参数
+### 2.5 请求参数
 
 当前登录接口使用 query 参数传递账号密码：
 
@@ -139,7 +211,7 @@ POST http://服务器IP/modeling/api/auth/UserLogin/Login
 curl -X POST "http://服务器IP/modeling/api/auth/UserLogin/Login?Username=embed_user_1&Password=your_password"
 ```
 
-### 2.5 返回格式
+### 2.6 返回格式
 
 成功返回示例：
 
@@ -172,7 +244,7 @@ data.Token
 
 中获取建模平台 Token。
 
-### 2.6 Token 使用方式
+### 2.7 Token 使用方式
 
 建模平台前端当前会从浏览器 `localStorage` 中读取 Token：
 

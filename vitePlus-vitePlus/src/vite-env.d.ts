@@ -12,6 +12,8 @@ interface ImportMetaEnv {
   readonly VITE_API_TARGET: string
   readonly VITE_PYANALYSIS_TARGET: string
   readonly VITE_ONLINE_SERVICE_TARGET: string
+  readonly VITE_SKIP_AUTH: string
+  readonly VITE_EMBED_SECRET_KEY?: string
   readonly MODE: string
   readonly DEV: boolean
   readonly PROD: boolean
