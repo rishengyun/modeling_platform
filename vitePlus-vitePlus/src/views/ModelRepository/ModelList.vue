@@ -133,11 +133,11 @@
             <el-table-column prop="is_public" label="是否公开" min-width="8%" align="center">
               <template #default="scope">
                 <el-tag 
-                  :type="scope.row.is_public === '公开' ? 'success' : 'info'"
+                  :type="isPublicModel(scope.row.is_public) ? 'success' : 'info'"
                   round
                   effect="light"
                 >
-                  {{ scope.row.is_public }}
+                  {{ formatPublicStatus(scope.row.is_public) }}
                 </el-tag>
               </template>
             </el-table-column>
@@ -289,11 +289,11 @@
             <el-table-column prop="is_public" label="是否公开" min-width="8%" align="center">
               <template #default="scope">
                 <el-tag 
-                  :type="scope.row.is_public === '公开' ? 'success' : 'info'"
+                  :type="isPublicModel(scope.row.is_public) ? 'success' : 'info'"
                   round
                   effect="light"
                 >
-                  {{ scope.row.is_public }}
+                  {{ formatPublicStatus(scope.row.is_public) }}
                 </el-tag>
               </template>
             </el-table-column>
@@ -366,6 +366,14 @@ const publicModelOwnerList = [
   { label: '显示其他用户公开模型', value: 3 }
 ]
 
+function isPublicModel(value: ModelItem['is_public']) {
+  return value === 1 || value === '1' || value === '公开'
+}
+
+function formatPublicStatus(value: ModelItem['is_public']) {
+  return isPublicModel(value) ? '公开' : '不公开'
+}
+
 /** 获取特定状态的模型 */
 function getModelsByState(state: string) {
   return myModelData.value.filter(model => modelStateDic[model.model_state || ''] === state)
@@ -421,7 +429,7 @@ function openModifyDialog(param: ModelItem) {
   modifyMyModelDialog.value = true
   myModelInfo.modelID = param.model_id
   myModelInfo.taskId = param.task_id
-  formOfModifyMyModel.isPublic = param.is_public === 0 ? '不公开' : '公开'
+  formOfModifyMyModel.isPublic = formatPublicStatus(param.is_public)
   formOfModifyMyModel.modelName = param.model_name
   formOfModifyMyModel.modelDesc = param.model_desc
 }
