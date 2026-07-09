@@ -152,16 +152,23 @@ function buildSanitizedQuery(query: Record<string, unknown>) {
 router.beforeEach(async (to, from) => {
   const embedCredentials = await getEmbedCredentials(to);
   if (embedCredentials) {
+    console.log('[embed-auth] 检测到嵌入凭证，开始自动登录:', embedCredentials.username);
     try {
       const res = await login({
         Username: embedCredentials.username,
         Password: embedCredentials.password,
       });
       if (res.code === '0') {
+        console.log('[embed-auth] 登录成功，Token:', res.data?.Token ? '已获取' : '⚠️未获取');
         localStorage.setItem("Username", res.data.Username || embedCredentials.username);
         if (res.data.user_id !== undefined && res.data.user_id !== null) {
           localStorage.setItem("user_id", String(res.data.user_id));
           localStorage.setItem("UserId", String(res.data.user_id));
+        }
+        // Token 为空时直接跳登录，避免二次重定向
+        if (!getStoredToken()) {
+          console.warn('[embed-auth] 登录接口返回成功但无 Token，重定向到登录页');
+          return { path: "/login", query: { redirect: to.fullPath }, replace: true };
         }
         return {
           path: to.path,
@@ -170,9 +177,11 @@ router.beforeEach(async (to, from) => {
           replace: true,
         } as RouteLocationRaw;
       } else {
+        console.warn('[embed-auth] 登录失败:', res.msg || res.code);
         return { path: "/login", query: { redirect: to.fullPath }, replace: true };
       }
-    } catch {
+    } catch (err) {
+      console.error('[embed-auth] 登录接口异常:', err);
       return { path: "/login", query: { redirect: to.fullPath }, replace: true };
     }
   }
@@ -186,6 +195,7 @@ router.beforeEach(async (to, from) => {
     return true;
   }
   if (!myToken) {
+    console.log('[embed-auth] 无嵌入凭证且无本地 Token，重定向到登录页');
     return "/login";
   }
   try {
@@ -193,12 +203,14 @@ router.beforeEach(async (to, from) => {
     if (res.code === '0') {
       return true;
     } else {
+      console.warn('[embed-auth] Token 校验失败:', res.msg || res.code);
       return "/login";
     }
   } catch (err: unknown) {
     // 网络/网关/服务不可用时放行，由具体页面请求失败时再根据 40100 等跳登录
     const ax = err as { response?: { status?: number }; message?: string };
     if (ax?.response?.status === 404 || ax?.response?.status === 502 || ax?.message === 'Network Error') {
+      console.warn('[embed-auth] checkLogin 网络异常，放行:', ax?.message || ax?.response?.status);
       return true;
     } else {
       return "/login";
