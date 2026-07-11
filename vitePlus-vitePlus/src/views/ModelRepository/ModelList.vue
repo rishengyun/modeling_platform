@@ -94,7 +94,7 @@
             v-loading="myModelLoading" 
             :row-style="{ height: '65px' }"
             :cell-style="{ 'text-align': 'center' }"
-            :header-cell-style="{ 'text-align': 'center', background: '#a82525', color: '#fff' }"
+            :header-cell-style="{ 'text-align': 'center', background: '#1a2942', color: '#fff' }"
             class="model-table"
           >
             <el-table-column type="index" min-width="5%" align="center" />
@@ -260,7 +260,7 @@
             v-loading="publicModelLoading" 
             :row-style="{ height: '65px' }"
             :cell-style="{ 'text-align': 'center' }"
-            :header-cell-style="{ 'text-align': 'center', background: '#a82525', color: '#fff' }"
+            :header-cell-style="{ 'text-align': 'center', background: '#1a2942', color: '#fff' }"
             class="model-table"
           >
             <el-table-column type="index" min-width="5%" align="center" />
@@ -562,7 +562,7 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #d32f2f, #d32f2f);
+  background: linear-gradient(to right, #4c75a3, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -647,7 +647,7 @@ onMounted(() => {
 
 :deep(.el-menu-m .el-menu-item.is-active) {
   background-color: rgba(211, 47, 47, 0.1);
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .action-bar {
@@ -700,9 +700,9 @@ onMounted(() => {
 }
 
 .refresh-btn {
-  color: #d32f2f;
+  color: #4c75a3;
   background-color: rgba(211, 47, 47, 0.05);
-  border-color: #d32f2f;
+  border-color: #4c75a3;
   padding: 8px 16px;
   display: flex;
   align-items: center;

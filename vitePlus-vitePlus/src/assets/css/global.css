@@ -1,13 +1,13 @@
 :root {
   /* 01 颜色规范 */
   /* 主色 */
-  --el-color-primary: #D70000;
-  --el-color-primary-light-3: #E34D4D;
-  --el-color-primary-light-5: #EB8080;
-  --el-color-primary-light-7: #F3B3B3;
-  --el-color-primary-light-8: #F7CCCC;
-  --el-color-primary-light-9: #FBE6E6;
-  --el-color-primary-dark-2: #AC0000;
+  --el-color-primary: #4c75a3;
+  --el-color-primary-light-3: #829fc1;
+  --el-color-primary-light-5: #a6bbd1;
+  --el-color-primary-light-7: #c9d7e3;
+  --el-color-primary-light-8: #dbe4ec;
+  --el-color-primary-light-9: #ecf1f5;
+  --el-color-primary-dark-2: #3d5e82;
 
   /* 辅助色 */
   --el-color-success: #34C447;
@@ -49,7 +49,7 @@
 .my-button{
     z-index: 100;
     border-radius: 4px !important;
-    box-shadow: 0 2px 12px 0 rgba(215, 0, 0, 0.4)
+    box-shadow: 0 2px 12px 0 rgba(91, 156, 255, 0.9)
 }
 .my-title{
     font-size:18px;
@@ -87,24 +87,24 @@
 }
 
 .el-table--border::after,.el-table--group::after,.el-table::before {
-    background-color: rgba(211, 47, 47, 0.1);
+    background-color: rgba(6, 106, 155, 0.1);
 }
 
 .el-table--border{
-    border-top: 1px solid rgba(211, 47, 47, 0.1);
-    border-left: 1px solid rgba(211, 47, 47, 0.1);
+    border-top: 1px solid rgba(130, 178, 236, 0.1);
+    border-left: 1px solid rgba(130, 178, 236, 0.1);
 }
 .el-table--border::after,
 .el-table--group::after,
 .el-table::before {
-    background-color: rgba(211, 47, 47, 0.1);
+    background-color: rgba(6, 106, 155, 0.1);
 }
 
 .el-table th.el-table__cell,
 .el-table td.el-table__cell,
 .el-table th.el-table__cell.is-leaf,
 .el-table td.el-table__cell.is-leaf{
-    border: 1px solid rgba(211, 47, 47, 0.1);
+    border: 1px solid rgba(6, 106, 155, 0.1);
 }
 
 /* 04 输入框 聚焦阴影 */

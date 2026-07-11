@@ -363,14 +363,14 @@ export default {
             handleSize: '110%',
             handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
             handleStyle: {
-              color: '#a82525',
+              color: '#1a2942',
               shadowBlur: 3,
               shadowColor: 'rgba(0, 0, 0, 0.3)'
             },
             textStyle: {
               color: '#333'
             },
-            borderColor: '#a82525'
+            borderColor: '#1a2942'
           },
           {
             type: "inside",
@@ -388,7 +388,7 @@ export default {
           dimension: 2,
           show: false,
           inRange: {
-            color: ['#a82525', '#d32f2f', '#d32f2f']
+            color: ['#1a2942', '#4c75a3', '#4c75a3']
           }
         },
         series: [{
@@ -506,7 +506,7 @@ export default {
           axisPointer: {
             type: 'line',
             lineStyle: {
-              color: '#d32f2f',
+              color: '#4c75a3',
               width: 1
             }
           },
@@ -520,9 +520,9 @@ export default {
         legend: { 
           data: this.lineLegend,
           type: 'scroll',
-          pageIconColor: '#a82525',
+          pageIconColor: '#1a2942',
           pageTextStyle: {
-            color: '#a82525'
+            color: '#1a2942'
           }
         },
         toolbox: {
@@ -611,14 +611,14 @@ export default {
             handleSize: '110%',
             handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
             handleStyle: {
-              color: '#a82525',
+              color: '#1a2942',
               shadowBlur: 3,
               shadowColor: 'rgba(0, 0, 0, 0.3)'
             },
             textStyle: {
               color: '#333'
             },
-            borderColor: '#a82525'
+            borderColor: '#1a2942'
           },
           {
             type: "inside",
@@ -631,7 +631,7 @@ export default {
         ],
         series: this.lineSeries,
         color: [
-          '#a82525', '#d32f2f', '#d32f2f', '#5c7bd9', 
+          '#1a2942', '#4c75a3', '#4c75a3', '#5c7bd9', 
           '#9d5abd', '#d3436e', '#f86b0d', '#f2bd27'
         ]
       };
@@ -693,7 +693,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -751,14 +751,14 @@ export default {
 }
 
 :deep(.el-tabs__item.is-active) {
-  color: #a82525;
+  color: #1a2942;
   font-weight: 600;
 }
 
 :deep(.el-tabs__active-bar) {
   height: 3px;
   border-radius: 3px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
 }
 
 :deep(.el-tabs__nav-wrap::after) {
@@ -806,7 +806,7 @@ export default {
 
 .control-label {
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
   white-space: nowrap;
 }
 
@@ -833,7 +833,7 @@ export default {
 }
 
 .info-item .el-icon {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 /* 图表区域 */
@@ -917,13 +917,13 @@ export default {
 }
 
 :deep(.el-tabs--card > .el-tabs__header .el-tabs__item.is-active) {
-  background: linear-gradient(135deg, #a82525, #d32f2f);
+  background: linear-gradient(135deg, #1a2942, #4c75a3);
   color: white;
   box-shadow: 0 5px 15px rgba(168, 37, 37, 0.3);
 }
 
 :deep(.el-tabs--card > .el-tabs__header .el-tabs__item:not(.is-active):hover) {
-  color: #a82525;
+  color: #1a2942;
   background: rgba(211, 47, 47, 0.1);
 }
 
@@ -937,7 +937,7 @@ export default {
 
 :deep(.el-tabs__item[aria-controls*="pane-scatter"])::before {
   content: "\e6df"; /* 使用Element Plus散点图图标 */
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 :deep(.el-tabs__item[aria-controls*="pane-line"])::before {
@@ -970,7 +970,7 @@ export default {
   left: 0;
   height: 100%;
   width: 4px;
-  background: linear-gradient(to bottom, #a82525, #d32f2f);
+  background: linear-gradient(to bottom, #1a2942, #4c75a3);
   border-radius: 4px 0 0 4px;
 }
 
@@ -993,7 +993,7 @@ export default {
 
 .control-label {
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
   white-space: nowrap;
 }
 
@@ -1020,12 +1020,12 @@ export default {
 }
 
 .info-item .el-icon {
-  color: #d32f2f;
+  color: #4c75a3;
   font-size: 16px;
 }
 
 .info-item strong {
-  color: #a82525;
+  color: #1a2942;
   font-weight: 600;
 }
 </style>

@@ -3040,8 +3040,8 @@ export default {
 /* 添加和删除按钮优化样式 */
 .add-button {
   background-color: #f0f7ff;
-  color: #d32f2f;
-  border-color: #d32f2f;
+  color: #4c75a3;
+  border-color: #4c75a3;
   font-size: 18px;
   vertical-align: middle;
   margin-left: 10px;
@@ -3049,7 +3049,7 @@ export default {
 }
 
 .add-button:hover {
-  background-color: #d32f2f;
+  background-color: #4c75a3;
   color: white;
   transform: scale(1.05);
 }
@@ -3092,7 +3092,7 @@ div {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -3104,7 +3104,7 @@ div {
   padding: 15px;
   background-color: #f8fafc;
   border-radius: 4px;
-  border-left: 4px solid #d32f2f;
+  border-left: 4px solid #4c75a3;
   display: flex;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -3119,7 +3119,7 @@ div {
 
 .grid-search-value {
   font-size: 16px;
-  color: #a82525;
+  color: #1a2942;
   font-weight: 600;
   padding: 3px 10px;
   background-color: rgba(211, 47, 47, 0.1);
@@ -3178,7 +3178,7 @@ div {
 .section-line {
   width: 4px;
   height: 20px;
-  background-color: #d32f2f;
+  background-color: #4c75a3;
   margin-right: 10px;
   border-radius: 2px;
 }
@@ -3186,14 +3186,14 @@ div {
 .section-title {
   font-size: 18px;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
 }
 
 /* 步骤标题（旧版兼容） */
 .task-title-div {
   width: 4px;
   height: 20px;
-  background-color: #d32f2f;
+  background-color: #4c75a3;
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
@@ -3203,7 +3203,7 @@ div {
 .task-title-name {
   font-size: 18px;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   vertical-align: middle;
 }
 
@@ -3265,11 +3265,11 @@ div {
 }
 
 :deep(.el-input__inner:hover) {
-  border-color: #d32f2f;
+  border-color: #4c75a3;
 }
 
 :deep(.el-input__inner:focus) {
-  border-color: #a82525;
+  border-color: #1a2942;
   box-shadow: 0 0 0 2px rgba(168, 37, 37, 0.2);
 }
 
@@ -3282,16 +3282,16 @@ div {
 
 :deep(.el-input-number__decrease:hover),
 :deep(.el-input-number__increase:hover) {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 /* 选择器样式 */
 :deep(.el-select:hover .el-input__inner) {
-  border-color: #d32f2f;
+  border-color: #4c75a3;
 }
 
 :deep(.el-select .el-input.is-focus .el-input__inner) {
-  border-color: #a82525;
+  border-color: #1a2942;
 }
 
 /* 表格样式 */
@@ -3302,7 +3302,7 @@ div {
 
 :deep(.el-table th) {
   background-color: #f0f5fa !important;
-  color: #a82525 !important;
+  color: #1a2942 !important;
   font-weight: 600 !important;
 }
 
@@ -3323,19 +3323,19 @@ div {
 }
 
 :deep(.el-button--primary) {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
 }
 
 :deep(.el-button--primary:hover) {
-  background: linear-gradient(to right, #a82525, #c62828);
+  background: linear-gradient(to right, #1a2942, #2a476e);
   box-shadow: 0 4px 12px rgba(168, 37, 37, 0.2);
   transform: translateY(-1px);
 }
 
 :deep(.el-button--default:hover) {
-  border-color: #d32f2f;
-  color: #d32f2f;
+  border-color: #4c75a3;
+  color: #4c75a3;
   transform: translateY(-1px);
 }
 
@@ -3361,7 +3361,7 @@ div {
 .options {
   font-size: 18px;
   background-color: white;
-  color: #d32f2f;
+  color: #4c75a3;
   border-color: #e4e7ed;
   vertical-align: middle;
   margin-left: 10px;
@@ -3369,7 +3369,7 @@ div {
 }
 
 .options:hover {
-  color: #a82525;
+  color: #1a2942;
   background-color: #f0f5fa;
   border-color: #c6e2ff;
 }
@@ -3383,7 +3383,7 @@ div {
 :deep(.el-collapse-item__header) {
   background-color: #f8fafc;
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
 }
 
 :deep(.el-collapse-item__header:hover) {
@@ -3425,13 +3425,13 @@ div {
 
 :deep(.el-radio__input.is-checked .el-radio__inner),
 :deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
-  background-color: #d32f2f;
-  border-color: #d32f2f;
+  background-color: #4c75a3;
+  border-color: #4c75a3;
 }
 
 :deep(.el-radio__input.is-checked + .el-radio__label),
 :deep(.el-checkbox__input.is-checked + .el-checkbox__label) {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 /* 标签与内容的间距 */
@@ -3474,8 +3474,8 @@ div {
   height: 40px;
   border-radius: 50%;
   background-color: #f0f5fa;
-  border: 2px solid #d32f2f;
-  color: #d32f2f;
+  border: 2px solid #4c75a3;
+  color: #4c75a3;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -3484,7 +3484,7 @@ div {
 }
 
 .step-active .step-number {
-  background-color: #d32f2f;
+  background-color: #4c75a3;
   color: white;
 }
 
@@ -3494,7 +3494,7 @@ div {
 }
 
 .step-active .step-label {
-  color: #d32f2f;
+  color: #4c75a3;
   font-weight: 500;
 }
 
@@ -3527,7 +3527,7 @@ div {
   padding: 15px 20px;
   border-bottom: 1px solid #e4e7ed;
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
 }
 
 .parameter-content {
@@ -3542,7 +3542,7 @@ div {
 }
 
 :deep(.el-dialog__header) {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   padding: 16px 20px;
   margin-right: 0;
   border-bottom: 1px solid #eaeaea;

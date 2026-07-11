@@ -401,7 +401,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -510,12 +510,12 @@ onBeforeUnmount(() => {
 }
 
 :deep(.el-menu--horizontal .el-menu-item.is-active) {
-  border-bottom: 3px solid #d32f2f;
-  color: #d32f2f;
+  border-bottom: 3px solid #4c75a3;
+  color: #4c75a3;
 }
 
 :deep(.el-menu--horizontal .el-menu-item:not(.is-active):hover) {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .log-panel {
@@ -536,7 +536,7 @@ onBeforeUnmount(() => {
 
 .log-title {
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
 }
 
 .log-actions {
@@ -601,7 +601,7 @@ onBeforeUnmount(() => {
 }
 
 :deep(.el-loading-spinner .path) {
-  stroke: #d32f2f;
+  stroke: #4c75a3;
 }
 
 /* 响应式调整 */

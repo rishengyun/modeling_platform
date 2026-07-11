@@ -228,7 +228,7 @@
             border
             stripe
             class="annotation-table"
-            :header-cell-style="{ background: '#a82525', color: '#fff', textAlign: 'center' }"
+            :header-cell-style="{ background: '#1a2942', color: '#fff', textAlign: 'center' }"
             :cell-style="{ textAlign: 'center' }"
             height="560"
             row-key="index"
@@ -926,7 +926,7 @@ function downloadAnnotatedFile() {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -1008,7 +1008,7 @@ function downloadAnnotatedFile() {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #a82525;
+  color: #1a2942;
   font-size: 18px;
   font-weight: 600;
 }
@@ -1048,7 +1048,7 @@ function downloadAnnotatedFile() {
 }
 
 .batch-tip strong {
-  color: #a82525;
+  color: #1a2942;
 }
 
 .source-selector-wrapper {
@@ -1083,7 +1083,7 @@ function downloadAnnotatedFile() {
 .load-dataset-btn {
   width: 100%;
   margin-top: 12px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
 }
 
@@ -1157,7 +1157,7 @@ function downloadAnnotatedFile() {
 }
 
 :deep(.el-button.is-link) {
-  color: #a82525;
+  color: #1a2942;
 }
 
 @media (max-width: 1180px) {

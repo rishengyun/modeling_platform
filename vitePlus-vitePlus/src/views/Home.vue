@@ -242,7 +242,7 @@ onMounted(() => {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #d32f2f, #e57373);
+  background: linear-gradient(90deg, #4c75a3, #e57373);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -267,7 +267,7 @@ onMounted(() => {
 }
 
 .get-started-btn {
-  background: linear-gradient(90deg, #d32f2f, #c62828);
+  background: linear-gradient(90deg, #4c75a3, #2a476e);
   border: none;
   font-size: 16px;
   padding: 12px 24px;
@@ -285,8 +285,8 @@ onMounted(() => {
 
 .learn-more-btn {
   background: #ffffff;
-  color: #d32f2f;
-  border: 1px solid #d32f2f;
+  color: #4c75a3;
+  border: 1px solid #4c75a3;
   font-size: 16px;
   padding: 12px 24px;
   border-radius: 4px;
@@ -298,7 +298,7 @@ onMounted(() => {
 
 .learn-more-btn:hover {
   background: #ffebee;
-  color: #c62828;
+  color: #2a476e;
   transform: translateY(-3px);
 }
 
@@ -388,7 +388,7 @@ onMounted(() => {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #d32f2f;
+  color: #4c75a3;
   margin-bottom: 10px;
 }
 
@@ -421,7 +421,7 @@ onMounted(() => {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, #d32f2f, #c62828);
+  background: linear-gradient(90deg, #4c75a3, #2a476e);
 }
 
 .features-grid {
@@ -451,7 +451,7 @@ onMounted(() => {
 
 .feature-icon {
   font-size: 40px;
-  color: #d32f2f;
+  color: #4c75a3;
   margin-bottom: 20px;
 }
 
@@ -502,7 +502,7 @@ onMounted(() => {
 
 .access-icon {
   font-size: 36px;
-  color: #d32f2f;
+  color: #4c75a3;
   margin-bottom: 15px;
 }
 

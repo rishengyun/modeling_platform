@@ -107,7 +107,7 @@
           v-loading="taskLoading"
           :row-style="{ height: '65px' }"
           :cell-style="{ 'text-align': 'center' }"
-          :header-cell-style="{ 'text-align': 'center', background: '#a82525', color: '#fff' }"
+          :header-cell-style="{ 'text-align': 'center', background: '#1a2942', color: '#fff' }"
           class="task-table"
         >
           <el-table-column type="index" label="ID" min-width="5%" align="center" />
@@ -870,7 +870,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #d32f2f, #d32f2f);
+  background: linear-gradient(to right, #4c75a3, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -941,7 +941,7 @@ export default {
 
 
 .create-btn {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -949,7 +949,7 @@ export default {
 }
 
 .create-btn:hover {
-  background: linear-gradient(to right, #d32f2f, #a82525);
+  background: linear-gradient(to right, #4c75a3, #1a2942);
   transform: translateY(-1px);
   box-shadow: 0 5px 15px rgba(168, 37, 37, 0.2);
 }
@@ -992,9 +992,9 @@ export default {
 }
 /* 修改刷新按钮样式 */
 .refresh-btn {
-  color: #d32f2f;
+  color: #4c75a3;
   background-color: rgba(211, 47, 47, 0.05);
-  border-color: #d32f2f;
+  border-color: #4c75a3;
   padding: 8px 16px;
   display: flex;
   align-items: center;
@@ -1109,7 +1109,7 @@ export default {
 /* 弹窗通用样式 */
 :deep(.custom-dialog .el-dialog__header) {
   position: relative;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   padding: 16px 20px;
   margin-right: 0;
   border-bottom: 1px solid #eaeaea;
@@ -1178,7 +1178,7 @@ export default {
 
 .task-execution-dialog :deep(.el-table th) {
   background-color: #f0f5fa !important;
-  color: #a82525 !important;
+  color: #1a2942 !important;
   font-weight: 600 !important;
   padding: 12px 0;
 }
@@ -1194,7 +1194,7 @@ export default {
 /* 入库弹窗特定样式 */
 .model-save-dialog :deep(.el-form-item__label) {
   font-weight: 500;
-  color: #a82525;
+  color: #1a2942;
 }
 
 .model-save-dialog :deep(.el-input__inner) {
@@ -1203,11 +1203,11 @@ export default {
 }
 
 .model-save-dialog :deep(.el-input__inner:hover) {
-  border-color: #d32f2f;
+  border-color: #4c75a3;
 }
 
 .model-save-dialog :deep(.el-input__inner:focus) {
-  border-color: #a82525;
+  border-color: #1a2942;
   box-shadow: 0 0 0 2px rgba(168, 37, 37, 0.2);
 }
 
@@ -1217,21 +1217,21 @@ export default {
 }
 
 .model-save-dialog :deep(.el-textarea__inner:hover) {
-  border-color: #d32f2f;
+  border-color: #4c75a3;
 }
 
 .model-save-dialog :deep(.el-textarea__inner:focus) {
-  border-color: #a82525;
+  border-color: #1a2942;
   box-shadow: 0 0 0 2px rgba(168, 37, 37, 0.2);
 }
 
 .model-save-dialog :deep(.el-radio__input.is-checked .el-radio__inner) {
-  background-color: #d32f2f;
-  border-color: #d32f2f;
+  background-color: #4c75a3;
+  border-color: #4c75a3;
 }
 
 .model-save-dialog :deep(.el-radio__input.is-checked + .el-radio__label) {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 /* 按钮样式优化 */
@@ -1249,7 +1249,7 @@ export default {
 }
 
 :deep(.custom-dialog .el-dialog__footer .el-button--primary) {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
   font-weight: 500;
   transition: all 0.3s;
@@ -1270,7 +1270,7 @@ export default {
 }
 
 .detail-table-title {
-  color: #a82525;
+  color: #1a2942;
   font-size: 14px;
   margin: 5px 5% 15px;
   font-weight: 600;

@@ -260,14 +260,14 @@ onMounted(() => {
 .platform-logo {
   font-size: 48px;
   margin-right: 15px;
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .brand-name {
   font-size: 32px;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(90deg, #d32f2f, #aa2222);
+  background: linear-gradient(90deg, #4c75a3, #1a2942);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -297,7 +297,7 @@ onMounted(() => {
 
 .feature-icon {
   font-size: 24px;
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 /* 装饰圆圈 */
@@ -358,7 +358,7 @@ onMounted(() => {
 .form-title {
   font-size: 28px;
   font-weight: 700;
-  color: #a82525;
+  color: #1a2942;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -374,7 +374,7 @@ onMounted(() => {
 }
 
 .input-icon {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .captcha-container {
@@ -409,7 +409,7 @@ onMounted(() => {
   padding: 12px;
   font-size: 16px;
   font-weight: 500;
-  background: linear-gradient(90deg, #d32f2f, #c62828);
+  background: linear-gradient(90deg, #4c75a3, #2a476e);
   border: none;
   margin-bottom: 20px;
   transition: all 0.3s;

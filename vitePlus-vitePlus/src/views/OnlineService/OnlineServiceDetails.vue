@@ -572,12 +572,12 @@ export default {
       },
       tableHeaderStyle: {
         background: '#f0f5fa',
-        color: '#a82525',
+        color: '#1a2942',
         fontSize: '14px',
         fontWeight: '600',
         textAlign: 'center',
         padding: '12px 0',
-        borderBottom: '2px solid #d32f2f',
+        borderBottom: '2px solid #4c75a3',
       },
       tableCellStyle: {
         textAlign: 'center',
@@ -970,7 +970,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 24px 32px;
-  background: linear-gradient(135deg, #a82525, #d32f2f);
+  background: linear-gradient(135deg, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px 20px 0;
@@ -1077,7 +1077,7 @@ export default {
 .section-line {
   width: 5px;
   height: 24px;
-  background: linear-gradient(to bottom, #a82525, #d32f2f);
+  background: linear-gradient(to bottom, #1a2942, #4c75a3);
   border-radius: 3px;
   margin-right: 15px;
 }
@@ -1085,7 +1085,7 @@ export default {
 .section-title {
   font-size: 18px;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   letter-spacing: 0.5px;
 }
 
@@ -1106,7 +1106,7 @@ export default {
 
 :deep(.el-descriptions__label) {
   background-color: #f8fafc !important;
-  color: #a82525 !important;
+  color: #1a2942 !important;
   font-weight: 600 !important;
   width: 150px;
   padding: 16px 20px !important;
@@ -1155,12 +1155,12 @@ export default {
 }
 
 :deep(.el-form-item:hover) {
-  border-left-color: #d32f2f;
+  border-left-color: #4c75a3;
 }
 
 :deep(.el-form-item__label) {
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   font-size: 15px;
 }
 
@@ -1303,7 +1303,7 @@ export default {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1321,7 +1321,7 @@ export default {
   border-radius: 4px;
   margin-right: 24px;
   background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(211, 47, 47, 0.1));
-  color: #d32f2f;
+  color: #4c75a3;
   box-shadow: 0 4px 10px rgba(211, 47, 47, 0.15);
   transition: transform 0.3s ease;
 }
@@ -1332,7 +1332,7 @@ export default {
 
 .memory-icon {
   background: linear-gradient(135deg, rgba(168, 37, 37, 0.2), rgba(168, 37, 37, 0.1));
-  color: #a82525;
+  color: #1a2942;
   box-shadow: 0 4px 10px rgba(168, 37, 37, 0.15);
 }
 
@@ -1344,7 +1344,7 @@ export default {
 .resource-value {
   font-size: 26px;
   font-weight: 700;
-  color: #a82525;
+  color: #1a2942;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
 }
@@ -1374,7 +1374,7 @@ export default {
   border: 1px solid #ebeef5;
   font-size: 14px;
   word-break: break-all;
-  color: #a82525;
+  color: #1a2942;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   position: relative;
 }
@@ -1431,7 +1431,7 @@ export default {
   margin-top: 15px;
   background-color: #fcfdfe;
   border: 1px solid #eef2f6;
-  border-left: 4px solid #a82525;
+  border-left: 4px solid #1a2942;
   border-radius: 4px;
   padding: 18px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
@@ -1442,14 +1442,14 @@ export default {
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   font-size: 15px;
   margin-bottom: 12px;
 }
 
 .instruction-title .el-icon {
   font-size: 18px;
-  color: #a82525;
+  color: #1a2942;
 }
 
 .instruction-content {
@@ -1498,7 +1498,7 @@ export default {
 
 .instruction-list code {
   background-color: #f1f3f5;
-  color: #d32f2f;
+  color: #4c75a3;
   padding: 2px 6px;
   border-radius: 4px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -1530,7 +1530,7 @@ export default {
   padding: 8px 12px;
   background-color: #f7f8fa;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   border-right: 1px solid #e5e6eb;
   flex-shrink: 0;
 }
@@ -1599,7 +1599,7 @@ export default {
 }
 
 :deep(.request-config-tabs .el-tabs__item.is-active) {
-  color: #a82525;
+  color: #1a2942;
   font-weight: 600;
   background-color: #ffffff;
   border-right-color: #ebeef5;
@@ -1688,7 +1688,7 @@ export default {
 }
 
 .test-btn {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(168, 37, 37, 0.22);
@@ -1723,7 +1723,7 @@ export default {
   margin: 0 0 12px;
   padding-bottom: 8px;
   border-bottom: 2px solid #f0f2f5;
-  color: #a82525;
+  color: #1a2942;
   font-size: 16px;
   font-weight: 600;
 }
@@ -1752,7 +1752,7 @@ export default {
 
 .header-item .header-key {
   min-width: 180px;
-  color: #a82525;
+  color: #1a2942;
   font-weight: 600;
 }
 

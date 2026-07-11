@@ -274,8 +274,8 @@ const setWordCloud = async params => {
     let tagDedupeBarOption = tagDedupeBarchart.getOption();
     
     const highlightColor = "var(--el-color-warning)"; // 橙色高亮
-    const defaultColor1 = "#a82525"; // 主题蓝色
-    const defaultColor2 = "#d32f2f"; // 浅蓝色
+    const defaultColor1 = "#1a2942"; // 主题蓝色
+    const defaultColor2 = "#4c75a3"; // 浅蓝色
     
     if (params.dataIndex === tagBarOption.lastClickedIndex) {
       return;
@@ -311,7 +311,7 @@ const setWordCloud = async params => {
       left: "center",
       top: 10,
       textStyle: {
-        color: "#a82525",
+        color: "#1a2942",
         fontSize: 16,
         fontWeight: 600,
       },
@@ -351,7 +351,7 @@ const setWordCloud = async params => {
         fontWeight: "bold",
         color: function() {
           const colors = [
-            '#a82525', '#d32f2f', '#3996ef', '#0ac6d7', '#51a8dd', 
+            '#1a2942', '#4c75a3', '#3996ef', '#0ac6d7', '#51a8dd', 
             '#066e8e', '#1e90ff', '#0080ff', '#5cb3cc', '#2b5f75'
           ];
           return colors[Math.floor(Math.random() * colors.length)];
@@ -388,7 +388,7 @@ const initChart = () => {
       left: "center",
       top: 10,
       textStyle: {
-        color: "#a82525",
+        color: "#1a2942",
         fontSize: 16,
         fontWeight: 600,
       },
@@ -470,7 +470,7 @@ const initChart = () => {
       barWidth: "50%",
       data: tagList.value.map(item => item.count),
       itemStyle: {
-        color: "#a82525",
+        color: "#1a2942",
         borderRadius: [4, 4, 0, 0]
       },
       emphasis: {
@@ -496,12 +496,12 @@ const initChart = () => {
       handleSize: '110%',
       handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
       handleStyle: {
-        color: '#a82525',
+        color: '#1a2942',
         shadowBlur: 3,
         shadowColor: 'rgba(0, 0, 0, 0.3)'
       },
       textStyle: {
-        color: '#a82525'
+        color: '#1a2942'
       },
       borderColor: '#ccc'
     }, {
@@ -520,7 +520,7 @@ const initChart = () => {
       left: "center",
       top: 10,
       textStyle: {
-        color: "#a82525",
+        color: "#1a2942",
         fontSize: 16,
         fontWeight: 600,
       },
@@ -602,7 +602,7 @@ const initChart = () => {
       barWidth: "50%",
       data: tagDedupeList.value.map(item => item.count),
       itemStyle: {
-        color: "#d32f2f",
+        color: "#4c75a3",
         borderRadius: [4, 4, 0, 0]
       },
       emphasis: {
@@ -628,12 +628,12 @@ const initChart = () => {
       handleSize: '110%',
       handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
       handleStyle: {
-        color: '#a82525',
+        color: '#1a2942',
         shadowBlur: 3,
         shadowColor: 'rgba(0, 0, 0, 0.3)'
       },
       textStyle: {
-        color: '#a82525'
+        color: '#1a2942'
       },
       borderColor: '#ccc'
     }, {
@@ -653,7 +653,7 @@ const initChart = () => {
       left: "center",
       top: 10,
       textStyle: {
-        color: "#a82525",
+        color: "#1a2942",
         fontSize: 16,
         fontWeight: 600,
       },
@@ -722,7 +722,7 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -854,7 +854,7 @@ onUnmounted(() => {
 .chart-title {
   font-size: 16px;
   font-weight: 600;
-  color: #a82525;
+  color: #1a2942;
   margin: 0 0 5px 0;
   display: flex;
   align-items: center;
@@ -863,7 +863,7 @@ onUnmounted(() => {
 
 .chart-title .el-icon {
   font-size: 18px;
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .chart-desc {
@@ -891,13 +891,13 @@ onUnmounted(() => {
 }
 
 :deep(.el-loading-spinner .el-loading-text) {
-  color: #a82525;
+  color: #1a2942;
   font-size: 14px;
   margin-top: 10px;
 }
 
 :deep(.el-loading-spinner .path) {
-  stroke: #a82525;
+  stroke: #1a2942;
 }
 
 /* 响应式样式 */

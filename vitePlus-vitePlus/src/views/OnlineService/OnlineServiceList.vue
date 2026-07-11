@@ -94,7 +94,7 @@
           v-loading="serviceLoading" 
           :row-style="{ height: '65px' }"
           :cell-style="{ 'text-align': 'center' }"
-          :header-cell-style="{ 'text-align': 'center', background: '#a82525', color: '#fff' }"
+          :header-cell-style="{ 'text-align': 'center', background: '#1a2942', color: '#fff' }"
           class="service-table"
         >
           <el-table-column type="index" min-width="3%" align="center" />
@@ -604,7 +604,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: linear-gradient(to right, #d32f2f, #d32f2f);
+  background: linear-gradient(to right, #4c75a3, #4c75a3);
   border-radius: 4px;
   color: white;
   margin: 20px;
@@ -730,9 +730,9 @@ export default {
 }
 
 .refresh-btn {
-  color: #d32f2f;
+  color: #4c75a3;
   background-color: rgba(211, 47, 47, 0.05);
-  border-color: #d32f2f;
+  border-color: #4c75a3;
   padding: 8px 16px;
   display: flex;
   align-items: center;
@@ -935,7 +935,7 @@ export default {
 }
 /* 修改模型部署按钮样式，与DataScreen保持一致 */
 .create-btn {
-  background: linear-gradient(to right, #a82525, #d32f2f);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
   border-radius: 4px;
   transition: all 0.3s;
@@ -947,7 +947,7 @@ export default {
 }
 
 .create-btn:hover {
-  background: linear-gradient(to right, #d32f2f, #a82525);
+  background: linear-gradient(to right, #4c75a3, #1a2942);
   transform: translateY(-1px);
   box-shadow: 0 5px 15px rgba(168, 37, 37, 0.2);
 }

@@ -123,14 +123,14 @@ function navigateTo(routeName: string) {
 .menu-item:hover {
   background-color: rgba(211, 47, 47, 0.05);
   border-left-color: rgba(211, 47, 47, 0.6);
-  color: #d32f2f !important;
+  color: #4c75a3 !important;
 }
 
 /* 选中状态 */
 .side-menu .el-menu-item.is-active {
   background: linear-gradient(90deg, rgba(211, 47, 47, 0.15), transparent);
-  color: #d32f2f !important;
-  border-left-color: #d32f2f;
+  color: #4c75a3 !important;
+  border-left-color: #4c75a3;
 }
 
 .menu-icon {
@@ -149,7 +149,7 @@ function navigateTo(routeName: string) {
 }
 
 .side-menu .el-menu-item.is-active .menu-icon {
-  color: #d32f2f;
+  color: #4c75a3;
 }
 
 .menu-footer {
@@ -160,7 +160,7 @@ function navigateTo(routeName: string) {
 
 .create-task-btn {
   width: 100%;
-  background: linear-gradient(90deg, #d32f2f, #c62828);
+  background: linear-gradient(90deg, #4c75a3, #2a476e);
   border: none;
   color: white;
   padding: 10px 0;
