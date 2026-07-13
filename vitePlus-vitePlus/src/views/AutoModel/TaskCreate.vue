@@ -1096,6 +1096,7 @@ import {
   featureTable,
   parameterTableCnn,
   parameterTableGdbt,
+  parameterTableGdbtClassification,
   parameterTableLstm,
   parameterTableMlp,
   parameterTableTransformer,
@@ -1124,6 +1125,7 @@ export default {
     const parameterTableDataLstm = JSON.parse(JSON.stringify(parameterTableLstm));
     const parameterTableDataMlp = JSON.parse(JSON.stringify(parameterTableMlp));
     const parameterTableDataGdbt = JSON.parse(JSON.stringify(parameterTableGdbt));
+    const parameterTableDataGdbtClassification = JSON.parse(JSON.stringify(parameterTableGdbtClassification));
     const parameterTableDataCnn = JSON.parse(JSON.stringify(parameterTableCnn));
     const parameterTableDataTransformer = JSON.parse(JSON.stringify(parameterTableTransformer));
     const parameterTableDataGlobalPointer = JSON.parse(JSON.stringify(parameterTableGlobalPointer));
@@ -1177,6 +1179,7 @@ export default {
       featureTableData,
       parameterTableDataMlp,
       parameterTableDataGdbt,
+      parameterTableDataGdbtClassification,
       parameterTableDataCnn,
       parameterTableDataTransformer,
       parameterTableDataGlobalPointer,
@@ -1525,7 +1528,11 @@ export default {
         } else if (this.modelName === "MLP") {
           this.model = this.parameterTableDataMlp;
         } else if (this.modelName === "GDBT") {
-          this.model = this.parameterTableDataGdbt;
+          if (this.taskTypeValue === "classification") {
+            this.model = this.parameterTableDataGdbtClassification;
+          } else {
+            this.model = this.parameterTableDataGdbt;
+          }
         } else if (this.modelName === "CNN") {
           this.model = this.parameterTableDataCnn;
         } else if (this.modelName === "Transformer") {
@@ -2547,33 +2554,61 @@ export default {
 
       //针对GDBT模型
       if (this.modelName === "GDBT") {
-        this.middleData.model_parameters.hyperparameter["alpha"] = {
-          data_type: "float",
-          tuneParam: this.model[0].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["learning_rate"] = {
-          data_type: "float",
-          tuneParam: this.model[1].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["loss_func"] = {
-          tuneParam: this.model[2].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["n_estimators"] = {
-          data_type: "int",
-          tuneParam: this.model[3].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["max_depth"] = {
-          data_type: "int",
-          tuneParam: this.model[4].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["min_samples_leaf"] = {
-          data_type: "int",
-          tuneParam: this.model[5].tuneParam,
-        };
-        this.middleData.model_parameters.hyperparameter["min_samples_split"] = {
-          data_type: "int",
-          tuneParam: this.model[6].tuneParam,
-        };
+        if (this.taskTypeValue === "classification") {
+          // 分类 GDBT：无 alpha 参数
+          this.middleData.model_parameters.hyperparameter["learning_rate"] = {
+            data_type: "float",
+            tuneParam: this.model[0].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["loss_func"] = {
+            tuneParam: this.model[1].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["n_estimators"] = {
+            data_type: "int",
+            tuneParam: this.model[2].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["max_depth"] = {
+            data_type: "int",
+            tuneParam: this.model[3].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["min_samples_leaf"] = {
+            data_type: "int",
+            tuneParam: this.model[4].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["min_samples_split"] = {
+            data_type: "int",
+            tuneParam: this.model[5].tuneParam,
+          };
+        } else {
+          // 回归 GDBT：保留 alpha 参数
+          this.middleData.model_parameters.hyperparameter["alpha"] = {
+            data_type: "float",
+            tuneParam: this.model[0].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["learning_rate"] = {
+            data_type: "float",
+            tuneParam: this.model[1].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["loss_func"] = {
+            tuneParam: this.model[2].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["n_estimators"] = {
+            data_type: "int",
+            tuneParam: this.model[3].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["max_depth"] = {
+            data_type: "int",
+            tuneParam: this.model[4].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["min_samples_leaf"] = {
+            data_type: "int",
+            tuneParam: this.model[5].tuneParam,
+          };
+          this.middleData.model_parameters.hyperparameter["min_samples_split"] = {
+            data_type: "int",
+            tuneParam: this.model[6].tuneParam,
+          };
+        }
       }
 
       //针对CNN模型
