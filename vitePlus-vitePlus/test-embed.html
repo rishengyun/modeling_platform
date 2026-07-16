@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试建模平台 Iframe 嵌入效果</title>
+    <style>
+        body { 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* 模拟应急父系统的红色顶部 */
+        .mock-header { 
+            background: #d32f2f; 
+            color: white; 
+            height: 60px; 
+            display: flex;
+            align-items: center;
+            padding: 0 20px; 
+            font-size: 22px; 
+            font-weight: bold; 
+        }
+        .container { 
+            display: flex; 
+            flex: 1; 
+        }
+        /* 模拟应急父系统的左侧边栏 */
+        .mock-sidebar { 
+            width: 220px; 
+            background: #ffffff; 
+            border-right: 1px solid #ddd; 
+            display: flex;
+            flex-direction: column;
+        }
+        .mock-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mock-sidebar li {
+            padding: 15px 20px;
+            cursor: pointer;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .mock-sidebar li:hover {
+            background-color: #f9f9f9;
+        }
+        .mock-sidebar li.active {
+            color: #d32f2f;
+            font-weight: bold;
+            background-color: #ffebee;
+            border-left: 4px solid #d32f2f;
+        }
+        .mock-content { 
+            flex: 1; 
+            background-color: #f0f2f5;
+            display: flex;
+            padding: 10px;
+        }
+        /* 这里是重点：嵌入的 Iframe */
+        iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="mock-header">
+        应急联动与指挥调度平台 (模拟)
+    </div>
+    <div class="container">
+        <div class="mock-sidebar">
+            <ul>
+                <li>📊 数据中台</li>
+                <li>⚙️ 应用中台</li>
+                <li class="active">🤖 AI 平台 (当前)</li>
+                <li>📝 应激处置与演练</li>
+            </ul>
+        </div>
+        <div class="mock-content">
+            <!-- 指向本地正在运行的建模平台开发服务器 -->
+            <!-- 如果您本地端口不是9877，请自行修改 -->
+            <iframe src="http://localhost:9877/datascreen"></iframe>
+        </div>
+    </div>
+</body>
+</html>

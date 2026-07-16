@@ -1,3 +1,10 @@
+/**
+ * 防御：非 qiankun 环境下，部分依赖（如 Element Plus）内部可能读取
+ * window.__POWERED_BY_QIANKUN__.isPoweredByQiankun 导致整个 Vue 初始化崩溃。
+ * iframe 嵌入时不存在该全局变量，预先注入防止抛 TypeError。
+ */
+;(window as any).__POWERED_BY_QIANKUN__ ??= { isPoweredByQiankun: false }
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'

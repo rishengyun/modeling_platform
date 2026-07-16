@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw, type RouteLocationRaw } from 'vue-router'
 import { getStoredToken } from "@/utils/token";
-import type { Result } from "@/api/types";
 import { checkLogin, login } from "@/api/auth";
+import { decryptEmbedToken } from "@/utils/crypto";
 
 // 使用动态导入替换静态导入
 const Layout = () => import('../layout/Layout.vue')
@@ -89,8 +89,36 @@ function getQueryStringValue(value: unknown): string {
   return value === undefined || value === null ? "" : String(value);
 }
 
-function getEmbedCredentials(to: { query: Record<string, unknown> }) {
+interface EmbedCredentials {
+  username: string
+  password: string
+}
+
+/**
+ * 从 URL query 参数提取登录凭证，支持两种模式：
+ * 1. 加密模式：?token=<AES-256-GCM 加密的 username:password>（优先）
+ * 2. 明文模式：?username=xxx&password=yyy（向后兼容）
+ */
+/** 嵌入登录默认密钥，env 未配置时兜底，与父系统约定一致 */
+const DEFAULT_EMBED_SECRET = 'tB70xG5_1T3j2doRFJ1LUW1EKZk4bpmkKCpAJ9gBYqs'
+
+async function getEmbedCredentials(to: { query: Record<string, unknown> }): Promise<EmbedCredentials | null> {
   const query = to.query || {};
+
+  // 优先：加密 token 模式
+  const token = getQueryStringValue(query.token) || getQueryStringValue(query.Token);
+  if (token) {
+    const secret = import.meta.env.VITE_EMBED_SECRET_KEY || DEFAULT_EMBED_SECRET
+    try {
+      const cred = await decryptEmbedToken(token, secret);
+      return { username: cred.username, password: cred.password };
+    } catch (err) {
+      console.error('[embed-auth] token 解密失败:', err);
+      return null;
+    }
+  }
+
+  // 降级：明文 username + password 模式（向后兼容）
   const username =
     getQueryStringValue(query.username) ||
     getQueryStringValue(query.Username) ||
@@ -98,11 +126,20 @@ function getEmbedCredentials(to: { query: Record<string, unknown> }) {
   const password =
     getQueryStringValue(query.password) ||
     getQueryStringValue(query.Password);
-  return { username, password };
+
+  if (username && password) {
+    return { username, password };
+  }
+
+  return null;
 }
 
 function buildSanitizedQuery(query: Record<string, unknown>) {
   const sanitized = { ...query };
+  // 清除加密 token
+  delete sanitized.token;
+  delete sanitized.Token;
+  // 清除明文凭证（向后兼容）
   delete sanitized.username;
   delete sanitized.Username;
   delete sanitized.userName;
@@ -111,72 +148,74 @@ function buildSanitizedQuery(query: Record<string, unknown>) {
   return sanitized;
 }
 
-// 路由守卫：有 token 时用 CheckLogin 校验；无 token 或校验明确失败则跳登录
-router.beforeEach((to, from, next) => {
-  const embedCredentials = getEmbedCredentials(to);
-  if (embedCredentials.username && embedCredentials.password) {
-    login({
-      Username: embedCredentials.username,
-      Password: embedCredentials.password,
-    }).then((res) => {
+// 路由守卫：嵌入自动登录（加密 token 优先，明文降级兼容）→ Token 校验 → 跳转
+router.beforeEach(async (to, from) => {
+  const embedCredentials = await getEmbedCredentials(to);
+  if (embedCredentials) {
+    console.log('[embed-auth] 检测到嵌入凭证，开始自动登录:', embedCredentials.username);
+    try {
+      const res = await login({
+        Username: embedCredentials.username,
+        Password: embedCredentials.password,
+      });
       if (res.code === '0') {
+        console.log('[embed-auth] 登录成功，Token:', res.data?.Token ? '已获取' : '⚠️未获取');
         localStorage.setItem("Username", res.data.Username || embedCredentials.username);
         if (res.data.user_id !== undefined && res.data.user_id !== null) {
           localStorage.setItem("user_id", String(res.data.user_id));
           localStorage.setItem("UserId", String(res.data.user_id));
         }
-        next({
+        // Token 为空时直接跳登录，避免二次重定向
+        if (!getStoredToken()) {
+          console.warn('[embed-auth] 登录接口返回成功但无 Token，重定向到登录页');
+          return { path: "/login", query: { redirect: to.fullPath }, replace: true };
+        }
+        return {
           path: to.path,
           query: buildSanitizedQuery(to.query as Record<string, unknown>),
           hash: to.hash,
           replace: true,
-        } as RouteLocationRaw);
+        } as RouteLocationRaw;
       } else {
-        next({
-          path: "/login",
-          query: { redirect: to.fullPath },
-          replace: true,
-        });
+        console.warn('[embed-auth] 登录失败:', res.msg || res.code);
+        return { path: "/login", query: { redirect: to.fullPath }, replace: true };
       }
-    }).catch(() => {
-      next({
-        path: "/login",
-        query: { redirect: to.fullPath },
-        replace: true,
-      });
-    });
-    return;
+    } catch (err) {
+      console.error('[embed-auth] 登录接口异常:', err);
+      return { path: "/login", query: { redirect: to.fullPath }, replace: true };
+    }
   }
 
   // 开发环境跳过认证：用于无后端服务时预览前端样式
   if (import.meta.env.VITE_SKIP_AUTH === 'true') {
-    next();
-    return;
+    return true;
   }
   const myToken = getStoredToken();
   if (to.path === '/login' || to.path === '/register') {
-    next();
-    return;
+    return true;
   }
   if (!myToken) {
-    next("/login");
-    return;
+    console.log('[embed-auth] 无嵌入凭证且无本地 Token，重定向到登录页');
+    return "/login";
   }
-  checkLogin(myToken).then((res: Result<unknown>) => {
+  try {
+    const res = await checkLogin(myToken);
     if (res.code === '0') {
-      next();
+      return true;
     } else {
-      next("/login");
+      console.warn('[embed-auth] Token 校验失败:', res.msg || res.code);
+      return "/login";
     }
-  }).catch((err: unknown) => {
+  } catch (err: unknown) {
     // 网络/网关/服务不可用时放行，由具体页面请求失败时再根据 40100 等跳登录
     const ax = err as { response?: { status?: number }; message?: string };
     if (ax?.response?.status === 404 || ax?.response?.status === 502 || ax?.message === 'Network Error') {
-      next();
+      console.warn('[embed-auth] checkLogin 网络异常，放行:', ax?.message || ax?.response?.status);
+      return true;
     } else {
-      next("/login");
+      return "/login";
     }
-  });
+  }
 });
 
 export default router
