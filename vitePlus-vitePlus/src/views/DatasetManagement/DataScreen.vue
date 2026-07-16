@@ -1319,7 +1319,7 @@ export default {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #4c75a3, #4c75a3); /* 更浅的蓝色渐变 */
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1355,7 +1355,7 @@ export default {
 
 .metric-card {
   background: rgba(255, 255, 255, 0.18); /* 略微增加透明度 */
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 20px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -1381,7 +1381,7 @@ export default {
 .content-panel {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 210px);
@@ -1393,7 +1393,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to right, #f6f8fa, #e9ecef);
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 25px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
@@ -1406,7 +1406,7 @@ export default {
 
 .tech-input {
   width: 360px;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.3s;
 }
 
@@ -1416,31 +1416,31 @@ export default {
 }
 
 .tech-select {
-  border-radius: 6px;
+  border-radius: 4px;
   min-width: 150px;
 }
 
 .create-btn, .search-btn {
-  background: linear-gradient(to right, #1a2942, #2a476e);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.3s;
 }
 
 .create-btn:hover, .search-btn:hover {
-  background: linear-gradient(to right, #2a476e, #1a2942);
+  background: linear-gradient(to right, #4c75a3, #1a2942);
   transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(26, 41, 66, 0.2);
+  box-shadow: 0 5px 15px rgba(168, 37, 37, 0.2);
 }
 
 .table-container {
   margin: 0;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .tech-table {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -1511,7 +1511,7 @@ export default {
 
 .view-btn:hover {
   color: #4c75a3 !important;
-  background-color: rgba(76, 117, 163, 0.05);
+  background-color: rgba(211, 47, 47, 0.05);
 }
 
 /* 新增按钮样式 */
@@ -1529,7 +1529,7 @@ export default {
 
 /* 修改按钮样式 */
 .edit-btn {
-  color: #409EFF !important;
+  color: var(--el-color-primary) !important;
   border: 1px solid #c6e2ff;
   background-color: rgba(64, 158, 255, 0.05);
 }
@@ -1542,7 +1542,7 @@ export default {
 
 /* 删除按钮样式 */
 .delete-btn {
-  color: #F56C6C !important;
+  color: var(--el-color-danger) !important;
   border: 1px solid #fbc4c4;
   background-color: rgba(245, 108, 108, 0.05);
 }
@@ -1612,14 +1612,14 @@ export default {
 }
 
 :deep(.el-table__row-is-expand-row-expandable:hover) {
-  background-color: rgba(76, 117, 163, 0.05) !important;
+  background-color: rgba(211, 47, 47, 0.05) !important;
 }
 
 /* 展开后的子表格样式 */
 .expanded-table {
   margin-left: 0 !important; /* 移除原来的左边距 */
   width: 100% !important; /* 使用全宽 */
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #ebeef5;
@@ -1636,7 +1636,7 @@ export default {
 :deep(.data-table .el-table__row:hover) {
   background-color: #edf2f9 !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 117, 163, 0.12);
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.12);
 }
 
 /* 使数据集名称更加醒目 */
@@ -1667,7 +1667,7 @@ export default {
   height: 6px;
   border-radius: 50%;
   background-color: #4c75a3;
-  box-shadow: 0 0 0 2px rgba(76, 117, 163, 0.2);
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
 }
 
 /* 行间距和分隔 */

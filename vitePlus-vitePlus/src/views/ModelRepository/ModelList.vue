@@ -133,11 +133,11 @@
             <el-table-column prop="is_public" label="是否公开" min-width="8%" align="center">
               <template #default="scope">
                 <el-tag 
-                  :type="scope.row.is_public === '公开' ? 'success' : 'info'"
+                  :type="isPublicModel(scope.row.is_public) ? 'success' : 'info'"
                   round
                   effect="light"
                 >
-                  {{ scope.row.is_public }}
+                  {{ formatPublicStatus(scope.row.is_public) }}
                 </el-tag>
               </template>
             </el-table-column>
@@ -289,11 +289,11 @@
             <el-table-column prop="is_public" label="是否公开" min-width="8%" align="center">
               <template #default="scope">
                 <el-tag 
-                  :type="scope.row.is_public === '公开' ? 'success' : 'info'"
+                  :type="isPublicModel(scope.row.is_public) ? 'success' : 'info'"
                   round
                   effect="light"
                 >
-                  {{ scope.row.is_public }}
+                  {{ formatPublicStatus(scope.row.is_public) }}
                 </el-tag>
               </template>
             </el-table-column>
@@ -366,6 +366,14 @@ const publicModelOwnerList = [
   { label: '显示其他用户公开模型', value: 3 }
 ]
 
+function isPublicModel(value: ModelItem['is_public']) {
+  return value === 1 || value === '1' || value === '公开'
+}
+
+function formatPublicStatus(value: ModelItem['is_public']) {
+  return isPublicModel(value) ? '公开' : '不公开'
+}
+
 /** 获取特定状态的模型 */
 function getModelsByState(state: string) {
   return myModelData.value.filter(model => modelStateDic[model.model_state || ''] === state)
@@ -421,7 +429,7 @@ function openModifyDialog(param: ModelItem) {
   modifyMyModelDialog.value = true
   myModelInfo.modelID = param.model_id
   myModelInfo.taskId = param.task_id
-  formOfModifyMyModel.isPublic = param.is_public === 0 ? '不公开' : '公开'
+  formOfModifyMyModel.isPublic = formatPublicStatus(param.is_public)
   formOfModifyMyModel.modelName = param.model_name
   formOfModifyMyModel.modelDesc = param.model_desc
 }
@@ -555,7 +563,7 @@ onMounted(() => {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #4c75a3, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -590,7 +598,7 @@ onMounted(() => {
 
 .metric-card {
   background: rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 20px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -616,7 +624,7 @@ onMounted(() => {
 .content-panel {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 210px);
@@ -638,7 +646,7 @@ onMounted(() => {
 }
 
 :deep(.el-menu-m .el-menu-item.is-active) {
-  background-color: rgba(76, 117, 163, 0.1);
+  background-color: rgba(211, 47, 47, 0.1);
   color: #4c75a3;
 }
 
@@ -649,7 +657,7 @@ onMounted(() => {
   margin-bottom: 20px;
   padding: 15px 20px;
   background-color: #f9fafc;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -693,7 +701,7 @@ onMounted(() => {
 
 .refresh-btn {
   color: #4c75a3;
-  background-color: rgba(76, 117, 163, 0.05);
+  background-color: rgba(211, 47, 47, 0.05);
   border-color: #4c75a3;
   padding: 8px 16px;
   display: flex;
@@ -704,9 +712,9 @@ onMounted(() => {
 }
 
 .refresh-btn:hover {
-  background-color: rgba(76, 117, 163, 0.15);
+  background-color: rgba(211, 47, 47, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(76, 117, 163, 0.2);
+  box-shadow: 0 3px 8px rgba(211, 47, 47, 0.2);
 }
 
 .refresh-icon {
@@ -730,7 +738,7 @@ onMounted(() => {
 }
 
 .table-container {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 25px;
@@ -791,7 +799,7 @@ onMounted(() => {
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #409EFF;
+  color: var(--el-color-primary);
 }
 
 /* 对话框样式 */
@@ -808,7 +816,7 @@ onMounted(() => {
 
 :deep(.el-tag) {
   padding: 4px 12px;
-  border-radius: 12px;
+  border-radius: 4px;
   font-weight: 500;
 }
 </style>

@@ -388,7 +388,7 @@ export default {
           dimension: 2,
           show: false,
           inRange: {
-            color: ['#1a2942', '#2a476e', '#4c75a3']
+            color: ['#1a2942', '#4c75a3', '#4c75a3']
           }
         },
         series: [{
@@ -631,7 +631,7 @@ export default {
         ],
         series: this.lineSeries,
         color: [
-          '#1a2942', '#4c75a3', '#00c0ee', '#5c7bd9', 
+          '#1a2942', '#4c75a3', '#4c75a3', '#5c7bd9', 
           '#9d5abd', '#d3436e', '#f86b0d', '#f2bd27'
         ]
       };
@@ -694,7 +694,7 @@ export default {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #1a2942, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -723,7 +723,7 @@ export default {
 .content-panel {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 160px);
@@ -781,7 +781,7 @@ export default {
   align-items: center;
   padding: 15px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
@@ -840,7 +840,7 @@ export default {
 .chart-area {
   flex: 1;
   height: 60vh;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid #f0f0f0;
   overflow: hidden;
 }
@@ -889,8 +889,8 @@ export default {
 
 :deep(.el-tabs--card > .el-tabs__header .el-tabs__nav) {
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(to right, rgba(26, 41, 66, 0.05), rgba(76, 117, 163, 0.05));
+  border-radius: 4px;
+  background: linear-gradient(to right, rgba(168, 37, 37, 0.05), rgba(211, 47, 47, 0.05));
   padding: 5px;
 }
 
@@ -898,7 +898,7 @@ export default {
   border: none;
   height: 56px;
   margin: 0 5px;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 0 25px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
@@ -919,12 +919,12 @@ export default {
 :deep(.el-tabs--card > .el-tabs__header .el-tabs__item.is-active) {
   background: linear-gradient(135deg, #1a2942, #4c75a3);
   color: white;
-  box-shadow: 0 5px 15px rgba(26, 41, 66, 0.3);
+  box-shadow: 0 5px 15px rgba(168, 37, 37, 0.3);
 }
 
 :deep(.el-tabs--card > .el-tabs__header .el-tabs__item:not(.is-active):hover) {
   color: #1a2942;
-  background: rgba(76, 117, 163, 0.1);
+  background: rgba(211, 47, 47, 0.1);
 }
 
 /* 为标签添加图标 */
@@ -937,7 +937,7 @@ export default {
 
 :deep(.el-tabs__item[aria-controls*="pane-scatter"])::before {
   content: "\e6df"; /* 使用Element Plus散点图图标 */
-  color: #00c0ee;
+  color: #4c75a3;
 }
 
 :deep(.el-tabs__item[aria-controls*="pane-line"])::before {
@@ -956,7 +956,7 @@ export default {
   align-items: center;
   padding: 20px;
   background: white;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid #ebeef5;
@@ -985,10 +985,10 @@ export default {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(to right, rgba(26, 41, 66, 0.02), rgba(76, 117, 163, 0.02));
+  background: linear-gradient(to right, rgba(168, 37, 37, 0.02), rgba(211, 47, 47, 0.02));
   padding: 10px 15px;
-  border-radius: 6px;
-  border: 1px solid rgba(76, 117, 163, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(211, 47, 47, 0.1);
 }
 
 .control-label {
@@ -1006,17 +1006,17 @@ export default {
   display: flex;
   gap: 15px;
   padding-left: 20px;
-  border-left: 1px dashed rgba(76, 117, 163, 0.3);
+  border-left: 1px dashed rgba(211, 47, 47, 0.3);
 }
 
 .info-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(to right, rgba(26, 41, 66, 0.03), rgba(76, 117, 163, 0.03));
+  background: linear-gradient(to right, rgba(168, 37, 37, 0.03), rgba(211, 47, 47, 0.03));
   padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(76, 117, 163, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(211, 47, 47, 0.1);
 }
 
 .info-item .el-icon {

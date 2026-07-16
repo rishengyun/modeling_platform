@@ -315,7 +315,7 @@ const showEntityDetail = async tagName => {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #1a2942, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -352,7 +352,7 @@ const showEntityDetail = async tagName => {
 
 .metric-card {
   background: rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 20px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -379,7 +379,7 @@ const showEntityDetail = async tagName => {
 .content-panel {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
 }
@@ -414,9 +414,9 @@ const showEntityDetail = async tagName => {
 }
 
 .action-btn {
-  background: linear-gradient(to right, #1a2942, #2a476e);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.3s;
   display: flex;
   align-items: center;
@@ -426,9 +426,9 @@ const showEntityDetail = async tagName => {
 }
 
 .action-btn:hover {
-  background: linear-gradient(to right, #2a476e, #1a2942);
+  background: linear-gradient(to right, #4c75a3, #1a2942);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(26, 41, 66, 0.2);
+  box-shadow: 0 5px 15px rgba(168, 37, 37, 0.2);
 }
 
 .action-btn .el-icon {
@@ -438,17 +438,17 @@ const showEntityDetail = async tagName => {
 /* 表格区域 */
 .table-container {
   margin-top: 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .data-table {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 :deep(.el-table) {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
 }
@@ -501,14 +501,14 @@ const showEntityDetail = async tagName => {
   gap: 4px;
   border-radius: 4px;
   font-size: 13px;
-  background: rgba(76, 117, 163, 0.1);
-  border: 1px solid rgba(76, 117, 163, 0.2);
+  background: rgba(211, 47, 47, 0.1);
+  border: 1px solid rgba(211, 47, 47, 0.2);
   color: #1a2942;
   transition: all 0.3s;
 }
 
 .detail-btn:hover {
-  background: rgba(76, 117, 163, 0.2);
+  background: rgba(211, 47, 47, 0.2);
   color: #1a2942;
   transform: translateY(-1px);
 }
@@ -581,7 +581,7 @@ const showEntityDetail = async tagName => {
   gap: 20px;
   background-color: #f8f9fa;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 4px;
   border-left: 4px solid #4c75a3;
 }
 
@@ -605,7 +605,7 @@ const showEntityDetail = async tagName => {
 /* 实体表格 */
 .entity-table {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 

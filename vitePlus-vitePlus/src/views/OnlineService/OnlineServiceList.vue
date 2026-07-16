@@ -555,7 +555,7 @@ export default {
     //设置状态style
     setStateStyle(param) {
       if (param === '运行中' || param === 'running') {
-        return {"background-color": "#409eff", "color": "white","width":"80px"}
+        return {"background-color": "var(--el-color-primary)", "color": "white","width":"80px"}
       } else if (param === '部署中' || param === 'starting') {
         return {"background-color": "#69B0E9", "color": "white","width":"80px"}
       } else if (param === '停止' || param === 'stoped' || param === 'exited') {
@@ -605,7 +605,7 @@ export default {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #4c75a3, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -640,7 +640,7 @@ export default {
 
 .metric-card {
   background: rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 20px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -666,7 +666,7 @@ export default {
 .content-panel {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 210px);
@@ -679,7 +679,7 @@ export default {
   margin-bottom: 20px;
   padding: 15px 20px;
   background-color: #f9fafc;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -731,7 +731,7 @@ export default {
 
 .refresh-btn {
   color: #4c75a3;
-  background-color: rgba(76, 117, 163, 0.05);
+  background-color: rgba(211, 47, 47, 0.05);
   border-color: #4c75a3;
   padding: 8px 16px;
   display: flex;
@@ -742,9 +742,9 @@ export default {
 }
 
 .refresh-btn:hover {
-  background-color: rgba(76, 117, 163, 0.15);
+  background-color: rgba(211, 47, 47, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(76, 117, 163, 0.2);
+  box-shadow: 0 3px 8px rgba(211, 47, 47, 0.2);
 }
 
 .refresh-icon {
@@ -768,7 +768,7 @@ export default {
 }
 
 .table-container {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 25px;
@@ -840,7 +840,7 @@ export default {
 
 /* 访问统计对话框样式 */
 .access-dialog {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -880,7 +880,7 @@ export default {
 
 /* 确认对话框样式 */
 .confirm-dialog {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -904,7 +904,7 @@ export default {
 
 :deep(.el-tag) {
   padding: 4px 12px;
-  border-radius: 16px;
+  border-radius: 4px;
   font-weight: 500;
   min-width: 80px;
 }
@@ -935,9 +935,9 @@ export default {
 }
 /* 修改模型部署按钮样式，与DataScreen保持一致 */
 .create-btn {
-  background: linear-gradient(to right, #1a2942, #2a476e);
+  background: linear-gradient(to right, #1a2942, #4c75a3);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.3s;
   padding: 8px 16px;
   font-weight: 500;
@@ -947,9 +947,9 @@ export default {
 }
 
 .create-btn:hover {
-  background: linear-gradient(to right, #2a476e, #1a2942);
+  background: linear-gradient(to right, #4c75a3, #1a2942);
   transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(26, 41, 66, 0.2);
+  box-shadow: 0 5px 15px rgba(168, 37, 37, 0.2);
 }
 
 .create-btn .el-icon {

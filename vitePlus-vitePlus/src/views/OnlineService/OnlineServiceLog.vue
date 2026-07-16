@@ -189,6 +189,27 @@ function renderLogs(ele: string) {
   logRenderTimer = null
 }
 
+function getWsUrl(path: string): string {
+  const target = import.meta.env.VITE_BEFORE_TARGET || import.meta.env.VITE_API_TARGET;
+  if (target) {
+    try {
+      const url = new URL(target);
+      const protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+      let basePath = url.pathname;
+      if (basePath === '/') basePath = '';
+      if (basePath.endsWith('/')) basePath = basePath.slice(0, -1);
+      if (!basePath.includes('/algo')) basePath += '/algo';
+      return `${protocol}//${url.host}${basePath}${path}`;
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  const isSecure = window.location.protocol === 'https:';
+  const protocol = isSecure ? 'wss:' : 'ws:';
+  return `${protocol}//${window.location.host}/api/algo${path}`;
+}
+
 /** 连接日志WebSocket并批量渲染日志 */
 function logConnection(url: string, ele: string) {
   const ansi_up = new AnsiUp()
@@ -210,8 +231,19 @@ function logConnection(url: string, ele: string) {
   ws.onopen = () => {}
   ws.onclose = () => {
     if (logRenderTimer) clearTimeout(logRenderTimer)
+    if (ele === 'serviceMessages') {
+      logLoading.value = false
+    } else {
+      conLogLoading.value = false
+    }
   }
-  ws.onerror = () => {}
+  ws.onerror = () => {
+    if (ele === 'serviceMessages') {
+      logLoading.value = false
+    } else {
+      conLogLoading.value = false
+    }
+  }
 
   ws.onmessage = function (event) {
     if (event.data !== "pass") {
@@ -316,7 +348,9 @@ watch(pageIndex, (newValue) => {
       if (res.data.service_state === 'running') {
         node_id = res.data.extra_conf?.node_id || ''
         c_id = res.data.extra_conf?.container_id || ''
-        let url = `ws://192.168.109.198:8090/container/read_log/${node_id}/${c_id}`
+
+        let url = getWsUrl(`/container/read_log/${node_id}/${c_id}`)
+
         if (!wsDict[url]) {
           logConnection(url, 'containerMessage')
         }
@@ -345,7 +379,9 @@ onMounted(() => {
   serviceId.value = String(route.query.serviceId || '')
   serviceName.value = String(route.query.serviceName || '')
   serviceState.value = String(route.query.serviceState || '')
-  logConnection(`ws://192.168.109.198:8090/task/read_log/${serviceId.value}`, 'serviceMessages')
+
+  logConnection(getWsUrl(`/task/read_log/${serviceId.value}`), 'serviceMessages')
+
 })
 
 onBeforeUnmount(() => {
@@ -370,7 +406,7 @@ onBeforeUnmount(() => {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #1a2942, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -415,7 +451,7 @@ onBeforeUnmount(() => {
 .main-content-wrapper {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 150px);
@@ -428,7 +464,7 @@ onBeforeUnmount(() => {
   gap: 30px;
   padding: 20px;
   background-color: #f8fafc;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.03);
   border: 1px solid #ebeef5;
   margin-bottom: 20px;
@@ -442,7 +478,7 @@ onBeforeUnmount(() => {
 
 .info-label {
   font-size: 13px;
-  color: #909399;
+  color: var(--el-color-info);
 }
 
 .info-value {
@@ -461,7 +497,7 @@ onBeforeUnmount(() => {
 }
 
 .log-menu {
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #f1f5f9;
   border: 1px solid #ebeef5;
 }
@@ -487,7 +523,7 @@ onBeforeUnmount(() => {
 }
 
 .log-panel {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.03);
   border: 1px solid #ebeef5;
   overflow: hidden;

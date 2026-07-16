@@ -367,6 +367,118 @@ export const parameterTableGdbt = [
 
 ];
 
+// 分类任务 GDBT 配置参数（无 alpha 参数，损失函数为 deviance/exponential）
+export const parameterTableGdbtClassification = [
+    {
+        parameter: 'learning_rate',
+        defaultValue: 0.0001,
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'steps',
+        area: {
+            low_bound: 0.001,
+            high_bound: 0.1,
+        },
+        step: {
+            type: ['×'],
+            typeValue: '×',
+            value: 2,
+        },
+        description: '用于缩放每个基础决策树的输出的系数。',
+        gridError: false,
+        paramType: '训练参数'
+    },
+    {
+        parameter: 'loss_func',
+        defaultValue: 'deviance',
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'multi_select',
+        area: ["deviance", "exponential"],
+        areaValue: ["deviance"],
+        description: '损失函数。分类任务中 deviance 对应对数似然损失（交叉熵），exponential 对应指数损失。',
+        gridError: false,
+        paramType: '训练参数'
+    },
+    {
+        parameter: 'n_estimators',
+        defaultValue: 100,
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'steps',
+        area: {
+            low_bound: 100,
+            high_bound: 1000,
+        },
+        step: {
+            type: ['+', '×'],
+            typeValue: '×',
+            value: 2,
+        },
+        description: '用于控制模型中基础决策树的数量。',
+        gridError: false,
+        paramType: '训练参数'
+    },
+    {
+        parameter: 'max_depth',
+        defaultValue: 2,
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'steps',
+        area: {
+            low_bound: 1,
+            high_bound: 3,
+        },
+        step: {
+            type: ['+', '×'],
+            typeValue: '+',
+            value: 2,
+        },
+        description: '用于控制基础决策树的最大深度。',
+        gridError: false,
+        paramType: '模型结构参数'
+    },
+    {
+        parameter: 'min_samples_leaf',
+        defaultValue: 1,
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'steps',
+        area: {
+            low_bound: 1,
+            high_bound: 10,
+        },
+        step: {
+            type: ['+', '×'],
+            typeValue: '+',
+            value: 2,
+        },
+        description: '指定每个叶子结点包含的最少的样本数。',
+        gridError: false,
+        paramType: '模型结构参数'
+    },
+    {
+        parameter: 'min_samples_split',
+        defaultValue: 2,
+        tuneParam: false,
+        tuneParamList: [true, false],
+        tuneParam_type: 'steps',
+        area: {
+            low_bound: 1,
+            high_bound: 100,
+        },
+        step: {
+            type: ['+', '×'],
+            typeValue: '×',
+            value: 2,
+        },
+        description: '内部节点再划分所需最小样本数。',
+        gridError: false,
+        paramType: '模型结构参数'
+    },
+
+];
+
 //CNN的配置参数
 export const parameterTableCnn = [
     {

@@ -740,17 +740,42 @@ export default {
       _this.logLoading = true;
       let mark = 0;
       let messageNumber = 0;
-      const ws = new WebSocket(`ws://192.168.109.198:8090/task/read_log/${this.taskId}`);
+
+
+      const target = import.meta.env.VITE_BEFORE_TARGET || import.meta.env.VITE_API_TARGET;
+      let wsUrl = '';
+      if (target) {
+        try {
+          const url = new URL(target);
+          const protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+          let basePath = url.pathname;
+          if (basePath === '/') basePath = '';
+          if (basePath.endsWith('/')) basePath = basePath.slice(0, -1);
+          if (!basePath.includes('/algo')) basePath += '/algo';
+          wsUrl = `${protocol}//${url.host}${basePath}/task/read_log/${this.taskId}`;
+        } catch (e) {
+          // fallback
+        }
+      }
+      
+      if (!wsUrl) {
+        const isSecure = window.location.protocol === 'https:';
+        const protocol = isSecure ? 'wss:' : 'ws:';
+        wsUrl = `${protocol}//${window.location.host}/api/algo/task/read_log/${this.taskId}`;
+      }
+
+      const ws = new WebSocket(wsUrl);
+
       _this.ws = ws;
       ws.onopen = function () {
-
         console.log('WS open')
       };
       ws.onclose = function () {
         console.log('WS close');
+        _this.logLoading = false;
       };
       ws.onerror = function (event) {
-        // console.log(event.data);
+        _this.logLoading = false;
       };
       ws.onmessage = function (event) {
         if (event.data !== "pass") {
@@ -1022,7 +1047,7 @@ export default {
   align-items: center;
   padding: 20px 30px;
   background: linear-gradient(to right, #1a2942, #4c75a3);
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
   margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1067,7 +1092,7 @@ export default {
 .main-content-wrapper {
   background-color: white;
   margin: 0 20px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   padding: 20px;
   min-height: calc(100vh - 150px);
@@ -1080,7 +1105,7 @@ export default {
   align-items: center;
   padding: 20px 30px;
   background-color: #f8fafc;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid #ebeef5;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
   margin-bottom: 20px;
@@ -1100,7 +1125,7 @@ export default {
 
 .info-label {
   font-size: 13px;
-  color: #909399;
+  color: var(--el-color-info);
 }
 
 .info-value {
@@ -1120,7 +1145,7 @@ export default {
 }
 
 .tab-menu {
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #f1f5f9;
   border: 1px solid #ebeef5;
   overflow: hidden;
@@ -1153,7 +1178,7 @@ export default {
 
 /* 日志面板 */
 .log-panel {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.03);
   border: 1px solid #ebeef5;
   overflow: hidden;
@@ -1227,7 +1252,7 @@ export default {
 /* 区块卡片 */
 .section-card {
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
   border: 1px solid #ebeef5;
   overflow: hidden;
@@ -1301,7 +1326,7 @@ export default {
 .feature-option {
   background-color: #f0f5fa;
   padding: 10px 15px;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-bottom: 15px;
   color: #4c75a3;
   font-weight: 500;
@@ -1315,7 +1340,7 @@ export default {
   gap: 10px;
   padding: 10px 15px;
   background-color: #f0f5fa;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-bottom: 20px;
   color: #1a2942;
   font-weight: 500;

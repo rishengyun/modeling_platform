@@ -267,13 +267,13 @@ onMounted(() => {// 页面加载时生成验证码
 
 /* 左侧品牌区域样式 */
 .brand-section {
-  width: 45%;
-  background: linear-gradient(135deg, #1a2942 0%, #2a476e 50%, #4c75a3 100%);
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
+    width: 45%;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #333333;
   position: relative;
   overflow: hidden;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
@@ -293,14 +293,14 @@ onMounted(() => {// 页面加载时生成验证码
 .platform-logo {
   font-size: 48px;
   margin-right: 15px;
-  color: #00c0ee;
+  color: #4c75a3;
 }
 
 .brand-name {
   font-size: 32px;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(90deg, #ffffff, #00c0ee);
+  background: linear-gradient(90deg, #4c75a3, #1a2942);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -336,7 +336,7 @@ onMounted(() => {// 页面加载时生成验证码
 
 .feature-icon {
   font-size: 24px;
-  color: #00c0ee;
+  color: #4c75a3;
 }
 
 /* 装饰圆圈 */
@@ -352,7 +352,8 @@ onMounted(() => {// 页面加载时生成验证码
   position: absolute;
   border-radius: 50%;
   opacity: 0.1;
-  background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, #000000 0%, rgba(0,0,0,0) 70%);
+    opacity: 0.05;
 }
 
 .circle-1 {
@@ -389,7 +390,7 @@ onMounted(() => {// 页面加载时生成验证码
   width: 450px;
   padding: 40px;
   background: white;
-  border-radius: 12px;
+  border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -412,7 +413,7 @@ onMounted(() => {// 页面加载时生成验证码
 }
 
 .input-icon {
-  color: #2a476e;
+  color: #4c75a3;
 }
 
 .input-hint {
@@ -445,8 +446,8 @@ onMounted(() => {// 页面加载时生成验证码
 }
 
 .captcha-box:hover {
-  border-color: #00c0ee;
-  box-shadow: 0 0 10px rgba(0, 192, 238, 0.2);
+  border-color: #4c75a3;
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
 }
 
 .captcha-hint {
@@ -461,7 +462,7 @@ onMounted(() => {// 页面加载时生成验证码
   padding: 12px;
   font-size: 16px;
   font-weight: 500;
-  background: linear-gradient(90deg, #00c0ee, #2a84d8);
+  background: linear-gradient(90deg, #4c75a3, #2a476e);
   border: none;
   margin: 10px 0;
   transition: all 0.3s;
@@ -469,7 +470,7 @@ onMounted(() => {// 页面加载时生成验证码
 
 .submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 192, 238, 0.3);
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
 }
 
 .form-footer {
@@ -506,7 +507,7 @@ onMounted(() => {// 页面加载时生成验证码
 }
 
 :deep(.el-form-item__error) {
-  color: #f56c6c;
+  color: var(--el-color-danger);
   font-size: 12px;
   margin-top: 4px;
 }
@@ -516,7 +517,7 @@ onMounted(() => {// 页面加载时生成验证码
 }
 
 :deep(.el-button) {
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 :deep(.el-link) {
