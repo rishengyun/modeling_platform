@@ -5,21 +5,21 @@
       <div class="brand-content">
         <div class="logo-container">
           <el-icon class="platform-logo"><Monitor /></el-icon>
-          <h1 class="brand-name">智能中台建模平台</h1>
+          <h1 class="brand-name">Linkrisk studio</h1>
         </div>
         <!-- <p class="brand-slogan">加速AI模型开发与部署，赋能企业智能化转型</p> -->
         <div class="feature-points">
           <div class="feature-item">
             <el-icon class="feature-icon"><Cpu /></el-icon>
-            <span>高效的模型训练</span>
+            <span>高效的风控模型训练</span>
           </div>
           <div class="feature-item">
             <el-icon class="feature-icon"><Box /></el-icon>
-            <span>便捷的模型管理</span>
+            <span>统一的模型资产管理</span>
           </div>
           <div class="feature-item">
             <el-icon class="feature-icon"><Connection /></el-icon>
-            <span>一键式服务部署</span>
+            <span>开放服务快速发布</span>
           </div>
         </div>
       </div>

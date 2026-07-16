@@ -28,7 +28,7 @@ CPU：Intel(R) Xeon(R) CPU E7-8860 v3 @ 2.20GHz（8核）
 | **docker**     | 20.10.21             | -            |
 | **harbor**     | v2.6.2               | 8930         |
 | **postgreSQL** | tag:17.2             | 5432         |
-| **redis**      | tag:7.4.2            | 6379         |
+| **redis**      | tag:7.4.2            | 6380         |
 | **rabbitmq**   | tag:4.0.5-management | 5672/15672   |
 | **portainer**  | tag:2.31.0           | 9000         |
 | **nginx**      | tag:1.27.3           | -            |
@@ -162,7 +162,7 @@ docker run hello-world
 修改`/lib/systemd/system/docker.service`，如果没有此目录，请使用`systemctl status docker.service`命令查看本地docker.service目录。将其中的ExecStart按如下格式修改：
 
 ```
-ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock --insecure-registry 172.18.129.239:8930
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock --insecure-registry 192.168.109.198:8930
 ```
 
 重新载入服务信息，重启docker服务，查看端口2375是否开启：
@@ -246,7 +246,7 @@ requirepass niweijian123
 之后可以创建、启动redis容器，并绑定配置共享文件夹：
 
 ```bash
-docker run --restart=always -p 6379:6379 --name myredis -v /实际路径/redis/config/redis.conf:/etc/redis/redis.conf -v /实际路径/redis/data:/data -d redis:7.4.2 redis-server /etc/redis/redis.conf --appendonly yes
+docker run --restart=always -p 6380:6380 --name myredis -v /实际路径/redis/config/redis.conf:/etc/redis/redis.conf -v /实际路径/redis/data:/data -d redis:7.4.2 redis-server /etc/redis/redis.conf --appendonly yes
 ```
 
 请根据配置路径修改对应命令。
@@ -268,7 +268,7 @@ docker run -d --name myrabbitmq -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_
 微服务架构需要Nacos做服务发现，拉取镜像启动即可：
 
 ```bash
-docker run -d --name nacos -p 8848:8848 -p 9848:9848 -e MODE=standalone -e SPRING_DATASOURCE_PLATFORM=embedded nacos/nacos-server:v2.2.0
+docker run -d --name nacos -p 8848:8848 -p 9848:9848 -e MODE=standalone nacos/nacos-server:v2.2.0
 ```
 
 默认账号密码为nacos/nacos。
@@ -432,20 +432,20 @@ bash CreatePythonData.sh
 # 1. 构建数据预处理镜像
 cd modeling-platform-model-data-pre-backend
 docker build -t data-pre:0.8.4 .
-docker tag data-pre:0.8.4 172.18.129.239:8930/library/data-pre:0.8.4
-docker push 172.18.129.239:8930/library/data-pre:0.8.4
+docker tag data-pre:0.8.4 192.168.109.198:8930/library/data-pre:0.8.4
+docker push 192.168.109.198:8930/library/data-pre:0.8.4
 
 # 2. 构建训练镜像
 cd ../modeling-platform-model-train-backend
 docker build -t model:0.6.4 .
-docker tag model:0.6.4 172.18.129.239:8930/library/model/lstm:0.6.4
-docker push 172.18.129.239:8930/library/model/lstm:0.6.4
+docker tag model:0.6.4 192.168.109.198:8930/library/model/lstm:0.6.4
+docker push 192.168.109.198:8930/library/model/lstm:0.6.4
 
 # 3. 构建预测镜像
 cd ../modeling-platform-model-predict-backend
 docker build -t predict:0.4.5 .
-docker tag predict:0.4.5 172.18.129.239:8930/library/predict:0.4.5
-docker push 172.18.129.239:8930/library/predict:0.4.5
+docker tag predict:0.4.5 192.168.109.198:8930/library/predict:0.4.5
+docker push 192.168.109.198:8930/library/predict:0.4.5
 ```
 
 注意，这里的IP与端口需要修改，并且tag需要与配置文件中保持完全一致。
@@ -453,7 +453,7 @@ docker push 172.18.129.239:8930/library/predict:0.4.5
 如果遇到push报错，请先使用docker登录harbor：
 
 ```bash
-docker login 172.18.129.239:8930 -u admin -p your_password
+docker login 192.168.109.198:8930 -u admin -p your_password
 ```
 
 > **注意**: 构建完成后，config.yml中subtask_dict的image_name必须与推送的镜像名完全一致；执行任务的副节点需能访问Harbor并已docker login。

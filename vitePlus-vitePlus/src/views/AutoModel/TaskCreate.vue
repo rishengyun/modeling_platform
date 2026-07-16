@@ -1401,8 +1401,8 @@ export default {
           });
         }
         if (newValue === "classification") {
-          this.modelEvaluate = ["accuracy","f1","precision","recall"];
-          this.modelEvaluateList = ["accuracy","f1","f1_micro","f1_macro","f1_weighted","precision","recall"]
+          this.modelEvaluate = ["f1","accuracy","precision","recall"];
+          this.modelEvaluateList = ["f1","accuracy","balanced_accuracy","average_precision","f1_micro","f1_macro","f1_weighted","precision","recall"]
         } else if (newValue === "regression") {
           this.modelEvaluate = ["MAE", "MSE"];
           this.modelEvaluateList = ["MAE", "MSE"];

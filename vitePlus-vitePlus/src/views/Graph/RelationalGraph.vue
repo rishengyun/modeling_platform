@@ -220,7 +220,7 @@ import { SearchModeEnum, SearchModeMap } from '@/enums/SearchModeEnum'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { getStoredToken } from '@/utils/token'
 
-const appTitle = import.meta.env.VITE_APP_TITLE || '智能中台建模平台'
+const appTitle = import.meta.env.VITE_APP_TITLE || 'Linkrisk studio'
 
 // 路由器
 const $router = useRouter()

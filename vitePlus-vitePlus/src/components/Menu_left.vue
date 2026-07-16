@@ -6,13 +6,19 @@
       class="side-menu"
     >
       <div class="menu-header">
-        <div class="menu-title">功能导航</div>
+        <div class="menu-title">使用导航</div>
       </div>
-      
+
+      <el-menu-item index="/industryWorkbench" class="menu-item">
+        <el-icon class="menu-icon"><Opportunity /></el-icon>
+        <span>行业工作台</span>
+      </el-menu-item>
+
       <el-menu-item index="/datascreen" class="menu-item">
         <el-icon class="menu-icon"><Files /></el-icon>
         <span>数据集管理</span>
       </el-menu-item>
+
 
       <el-menu-item index="/dataAnnotation" class="menu-item">
         <el-icon class="menu-icon"><EditPen /></el-icon>
@@ -23,7 +29,7 @@
         <el-icon class="menu-icon"><Share /></el-icon>
         <span>图谱服务</span>
       </el-menu-item>
-      
+
       <el-menu-item index="/taskView" class="menu-item">
         <el-icon class="menu-icon"><Cpu /></el-icon>
         <span>自动建模</span>
@@ -46,6 +52,26 @@
       <el-menu-item index="/onlineServiceList" class="menu-item">
         <el-icon class="menu-icon"><Monitor /></el-icon>
         <span>在线服务</span>
+      </el-menu-item>
+
+      <el-menu-item index="/openServiceCenter" class="menu-item">
+        <el-icon class="menu-icon"><Connection /></el-icon>
+        <span>开放服务中心</span>
+      </el-menu-item>
+
+      <el-menu-item index="/workflowStudio" class="menu-item">
+        <el-icon class="menu-icon"><SetUp /></el-icon>
+        <span>低代码工坊</span>
+      </el-menu-item>
+
+      <el-menu-item index="/agentShowcase" class="menu-item">
+        <el-icon class="menu-icon"><MagicStick /></el-icon>
+        <span>智能体实验室</span>
+      </el-menu-item>
+
+      <el-menu-item index="/graphList" class="menu-item">
+        <el-icon class="menu-icon"><Share /></el-icon>
+        <span>图谱服务</span>
       </el-menu-item>
       
       <div class="menu-footer">
@@ -93,6 +119,27 @@ function navigateTo(routeName: string) {
   padding-top: 10px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+}
+
+.side-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.side-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+}
+
+.side-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .menu-header {

@@ -741,6 +741,7 @@ export default {
       let mark = 0;
       let messageNumber = 0;
 
+
       const target = import.meta.env.VITE_BEFORE_TARGET || import.meta.env.VITE_API_TARGET;
       let wsUrl = '';
       if (target) {
@@ -764,6 +765,7 @@ export default {
       }
 
       const ws = new WebSocket(wsUrl);
+
       _this.ws = ws;
       ws.onopen = function () {
         console.log('WS open')

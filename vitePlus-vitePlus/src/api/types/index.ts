@@ -6,4 +6,5 @@ export * from "./data";
 export * from "./algo";
 export * from "./pyanalysis";
 export * from "./graph";
+export * from "./platform";
 

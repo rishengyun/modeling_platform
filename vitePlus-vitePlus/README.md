@@ -86,8 +86,8 @@
 | VITE_BEFORE_URL        | string | FastAPI 主节点路径   | /api/algo                    |
 | VITE_BASE_URL          | string | 路由基础路径         | /                            |
 | VITE_DEBUG             | string | 是否开启调试         | true/false                   |
-| VITE_API_TARGET        | string | API代理目标（应指向 Gateway） | http://172.18.129.239:8080  |
-| VITE_PYANALYSIS_TARGET | string | Python分析服务代理目标 | http://172.18.129.239:8086 |
+| VITE_API_TARGET        | string | API代理目标（应指向 Gateway） | http://192.168.109.198:8080  |
+| VITE_PYANALYSIS_TARGET | string | Python分析服务代理目标 | http://192.168.109.198:8086 |
 
 ### 安装依赖
 

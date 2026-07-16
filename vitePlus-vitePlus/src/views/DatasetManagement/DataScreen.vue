@@ -690,6 +690,12 @@ export default {
         background: "rgba(255,255,255,0.7)",
       });
     },
+    closeFullScreen2() {
+      if (this.loading2 && typeof this.loading2.close === "function") {
+        this.loading2.close();
+      }
+      this.loading2 = [];
+    },
     //数据渲染
     load() {
       //传给后端，请求绘图数据
@@ -1159,16 +1165,27 @@ export default {
                   offset: 60,
                 });
                 this.load();
-                this.loading2.close();
                 this.$refs.uploadFormRef.resetFields();
               } else {
-                this.loading2.close();
                 this.$message({
                   type: "error",
                   message: res.msg,
                   offset: 60,
                 });
               }
+            })
+            .catch((error) => {
+              const message = error?.message?.includes("timeout")
+                ? "保存超时，请稍后刷新数据集列表确认是否已入库"
+                : "保存失败，请查看日志后重试";
+              this.$message({
+                type: "error",
+                message,
+                offset: 60,
+              });
+            })
+            .finally(() => {
+              this.closeFullScreen2();
             });
         } else if (this.uploadMode === 2) {
           //数据库导入
@@ -1195,15 +1212,23 @@ export default {
                   offset: 60,
                 });
                 this.load();
-                this.loading2.close();
               } else {
-                this.loading2.close();
                 this.$message({
                   type: "error",
                   message: res.msg,
                   offset: 60,
                 });
               }
+            })
+            .catch(() => {
+              this.$message({
+                type: "error",
+                message: "保存失败，请查看日志后重试",
+                offset: 60,
+              });
+            })
+            .finally(() => {
+              this.closeFullScreen2();
             });
         }
       } else {

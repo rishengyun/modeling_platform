@@ -3,6 +3,7 @@ docker_data/
 docker_log/
 harbor/
 redis/
+docs/
 model-backend/modeling-platform-springboot-backend/docker.env
 
 *.tgz
